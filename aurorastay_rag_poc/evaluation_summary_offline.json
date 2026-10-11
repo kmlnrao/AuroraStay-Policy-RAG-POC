@@ -1,0 +1,18 @@
+{
+  "Evaluation": {
+    "cases": 10,
+    "context_recall_proxy": 0.625,
+    "context_precision_proxy": 0.123,
+    "extractive_support_proxy": 1.0,
+    "answer_relevancy_proxy": 0.387,
+    "answers_returned": 10
+  },
+  "Test": {
+    "cases": 10,
+    "context_recall_proxy": 0.733,
+    "context_precision_proxy": 0.122,
+    "extractive_support_proxy": 1.0,
+    "answer_relevancy_proxy": 0.465,
+    "answers_returned": 10
+  }
+}

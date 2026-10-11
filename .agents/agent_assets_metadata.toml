@@ -1,0 +1,120 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "SpJI_Cy5N7so8QzehBwpc"
+uri = "file://.local/conversation-workspace/files/Project_3_Delivery_Exception_Resolution_Presentation.pptx"
+type = "slides"
+title = "Completed Project 3 Presentation"
+description = "Submission-ready presentation populated from the supplied template and verified evaluation results."
+logical_id = "c3095ec4-d0f1-4b28-b92c-f5561b4423a5"
+content_hash = "sha256:cc2497ee224b3c93a360e143adb4ee57a08e93852f54704b8600b6e0485b14cc"
+size = 1406906
+mtime_ms = 1789947565771
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/conversation:8759cd16-dbe3-46a0-8d75-1342f7d485ec/c3095ec4-d0f1-4b28-b92c-f5561b4423a5/f2132d75-303c-4018-a62d-0181cdb25138"
+storage_version_token = "1789947576591647"
+content_type = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+source_uri = "file://Project_3_Delivery_Exception_Resolution_Presentation.pptx"
+
+[[outputs]]
+id = "013qD8U4SY54X6VTGefA8"
+uri = "file://.local/conversation-workspace/files/Project_3_Low_Code_final.ipynb"
+type = "unspecified"
+title = "Updated executed notebook (supporting copy)"
+description = "Validated 185-cell notebook with outputs; keep as backup/reference because the assignment says not to submit the notebook."
+logical_id = "b76a6c9a-bc97-4061-b8e5-2cf1cbc75ad1"
+content_hash = "sha256:55cd4f1536439ba4f193ba6d1b03c63fd4dc63bf038a3d7f1bfe0b72baef006f"
+size = 197300
+mtime_ms = 1790352293077
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/conversation:8759cd16-dbe3-46a0-8d75-1342f7d485ec/b76a6c9a-bc97-4061-b8e5-2cf1cbc75ad1/60895d7f-e3af-44f6-9ff8-b2992a6f6c01"
+storage_version_token = "1790356441186688"
+content_type = "application/octet-stream"
+source_uri = "file://Project_3_Low_Code_final.ipynb"
+
+[[outputs]]
+id = "JQTu1ojNbBtiaHHKrfoM9"
+uri = "file://.local/conversation-workspace/files/.agents/outputs/Project_3_Submission.zip"
+type = "unspecified"
+title = "Project 3 Submission Bundle"
+description = "ZIP containing the completed notebook, presentation, reports, README, and reproducibility inputs."
+logical_id = "fe6f3ff4-9887-4b73-9da0-96e2cdaea537"
+content_hash = "sha256:afd2ff2cd4eca11978ab7e99203c46f57c281c047bb02eb779b34d9761ed3b21"
+size = 1567347
+mtime_ms = 1789947565931
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/conversation:8759cd16-dbe3-46a0-8d75-1342f7d485ec/fe6f3ff4-9887-4b73-9da0-96e2cdaea537/97f3471f-67a8-46b8-8c65-e4c68238b76a"
+storage_version_token = "1789947579348383"
+content_type = "application/octet-stream"
+source_uri = "file://.agents/outputs/Project_3_Submission.zip"
+
+[[outputs]]
+id = "-ok9aZZKuYXFzSPaEiboh"
+uri = "file://.local/conversation-workspace/files/Project_3_Delivery_Exception_Resolution_Submission.pdf"
+type = "pdf"
+title = "Submission PDF"
+description = "Final 12-page PDF. If your chat client will not preview PDFs, open the HTML preview alongside it."
+logical_id = "d3c908c5-3365-4bbd-9ea0-9383e3115b70"
+content_hash = "sha256:fdca5e6a782e495dae38607d5947d8d2bf6215c35bec18eaf6de666f0c55f1f2"
+size = 316864
+mtime_ms = 1790352301511
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/conversation:8759cd16-dbe3-46a0-8d75-1342f7d485ec/d3c908c5-3365-4bbd-9ea0-9383e3115b70/367cd772-2937-4a87-9f35-84242ec694f9"
+storage_version_token = "1790356588328427"
+content_type = "application/pdf"
+source_uri = "file://Project_3_Delivery_Exception_Resolution_Submission.pdf"
+
+[[outputs]]
+id = "kgWJhqs9Ed-Utb4ONxePG"
+uri = "file://.local/conversation-workspace/files/Project_3_Delivery_Exception_Resolution_Preview.html"
+type = "html"
+title = "Openable page-by-page preview"
+description = "Self-contained browser preview of all 12 pages, with a download-PDF button at the top."
+logical_id = "4e606221-6c2e-435a-967e-5106d4b338b0"
+content_hash = "sha256:ad46e4225dd4f03eb19768c671190ede96005e70fbc81f7358f9418229840447"
+size = 1810337
+mtime_ms = 1790356577164
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/conversation:8759cd16-dbe3-46a0-8d75-1342f7d485ec/4e606221-6c2e-435a-967e-5106d4b338b0/74c202e8-6d6c-49e4-a4f9-6ff19522f05d"
+storage_version_token = "1790356589659069"
+content_type = "text/html"
+source_uri = "file://Project_3_Delivery_Exception_Resolution_Preview.html"
+
+[[outputs]]
+id = "zsSGbp9BPev9VlPxLHEBd"
+uri = "file://.local/conversation-workspace/files/.agents/outputs/pdf-review/contact-sheet.png"
+type = "image"
+title = "12-page overview"
+description = "Quick visual overview of the complete presentation."
+logical_id = "11752c4c-13fc-49ef-820a-c534a7aae0d0"
+content_hash = "sha256:241e1b70e3e39803f3139a0eda2bb56adfcc4f5d379f549849dbe26792cf2579"
+size = 697698
+mtime_ms = 1790352301455
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/conversation:8759cd16-dbe3-46a0-8d75-1342f7d485ec/11752c4c-13fc-49ef-820a-c534a7aae0d0/bc7da47c-8aeb-4833-bb9c-c17cd6f41f79"
+storage_version_token = "1790356591072944"
+content_type = "image/png"
+source_uri = "file://.agents/outputs/pdf-review/contact-sheet.png"
+
+[[outputs]]
+id = "qBJmy5YMLwCp4rc1azx3q"
+uri = "file://.local/outputs/AuroraStay-Policy-Assistant-Submission.pdf"
+type = "pdf"
+title = "AuroraStay Policy Assistant Submission (PDF)"
+description = "Submission presentation exported from the supplied template. Includes measured offline evaluation results and clearly marked outstanding hosted-deployment criteria."
+logical_id = "88fa802b-6f88-4b8d-bb24-961c1f4d8c4e"
+content_hash = "sha256:a445acc9277363a812a412d7557ea6dcc3ae4cc24241037b4e56c131199655eb"
+size = 247171
+mtime_ms = 1791759751968
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/88fa802b-6f88-4b8d-bb24-961c1f4d8c4e/785808f9-1c46-4ba7-98a7-d3eea0fe7fda"
+storage_version_token = "1791759753486582"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "9oxEvOe3Eh8vt88K171N7"
+uri = "file://aurorastay_rag_poc/AuroraStay_RAG_Completed.ipynb"
+type = "unspecified"
+title = "AuroraStay Completed Notebook (Executed)"
+description = "Final supporting notebook with all five code cells executed and saved outputs for policy extraction, sample retrieval, and both 10-question offline evaluation splits."
+logical_id = "7a2653b6-6cfd-4c0e-bad5-aaa934a3aec4"
+content_hash = "sha256:7255cf030d89ab4d4f86e427a30822cc099b887d22aaaca02d6a614eea6c1495"
+size = 18639
+mtime_ms = 1791759799312
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/7a2653b6-6cfd-4c0e-bad5-aaa934a3aec4/a59326ed-5f5e-4e89-967b-792169ad9007"
+storage_version_token = "1791759822012199"
+content_type = "application/octet-stream"

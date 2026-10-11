@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/aurorastay-presentation/"
+title = "AuroraStay RAG Project"
+description = "A rubric-aligned presentation explaining the AuroraStay hotel-policy RAG proof of concept, benchmark evidence, limitations, and next steps."
+version = "1.0.0"
+id = "artifacts/aurorastay-presentation"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/aurorastay-presentation/" ]
+localPort = 20570
+
+[services.development]
+run = "pnpm --filter @workspace/aurorastay-presentation run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aurorastay-presentation", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/aurorastay-presentation/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20570"
+BASE_PATH = "/aurorastay-presentation/"

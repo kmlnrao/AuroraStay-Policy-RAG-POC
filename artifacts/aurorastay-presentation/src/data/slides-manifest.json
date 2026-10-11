@@ -1,0 +1,258 @@
+[
+  {
+    "id": "9af75d16-19e0-4388-951f-4ed923578b76",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide1.tsx",
+    "title": "AuroraStay Policy Assistant",
+    "description": "AuroraStay RAG project presentation.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "fc4d96db-d3e5-4492-a760-e3ab5d07e94b",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide2.tsx",
+    "title": "Contents / Agenda",
+    "description": "AuroraStay RAG project presentation.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "d70304cc-c39e-4549-8d6e-6610d248fbd5",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide3.tsx",
+    "title": "Executive Summary",
+    "description": "A reproducible local RAG baseline is built from four policy guides. It retrieves cited passages and runs all 20 supplied cases. Offline proxy scores are diagnostic only; hosted judging and inference remain unverified.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "6167600d-f5c4-40d1-8bf7-029250eeb522",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide4.tsx",
+    "title": "Business Problem and Solution",
+    "description": "Problem: 1,200 weekly queries; about 40% require cross-document policy lookup. Manual work takes 8\u201312 minutes, with a stated 15\u201320% error rate. Approach: retrieve approved policy evidence, answer only from it, show citations, and escalate uncertainty.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "e2654ee4-a6f9-4831-8558-78e49b5ec111",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide5.tsx",
+    "title": "Policy Data",
+    "description": "Four supplied guides cover booking, room/property facts, refunds/charges, and conduct/accessibility. Extraction produced 19 pages. Key risk: property, rate plan, timing, and exception details must not be generalized.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "8508246c-933b-40bf-83a6-1a774e3f1933",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide6.tsx",
+    "title": "Text Representation",
+    "description": "Embedding: corpus-fitted normalized TF-IDF vectors (local, deterministic; no pretrained max length). Similarity: cosine via normalized vectors. This is a lightweight POC baseline, not the domain-specific embedding model contemplated in the starter.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "e5db4c02-167d-4038-838e-8705781bd187",
+    "position": 7,
+    "filepath": "src/pages/slides/Slide7.tsx",
+    "title": "Chunk Design",
+    "description": "Recursive word-window chunking: 190 words per chunk, 35-word overlap; each chunk retains source PDF and page. Smaller, policy-section-aware chunks are a recommended next retrieval improvement.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "43cfebb5-f7b5-4a03-906d-b0e380235faa",
+    "position": 8,
+    "filepath": "src/pages/slides/Slide8.tsx",
+    "title": "Policy Chunk Example",
+    "description": "42 chunks from 19 pages. Example: \u201cASH-CHI Loop lists a $50 per night pet fee, capped at $150 per stay.\u201d Citation metadata is retained as source filename and page.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "172b6ad7-e505-4d4d-8d7b-dbda16994106",
+    "position": 9,
+    "filepath": "src/pages/slides/Slide9.tsx",
+    "title": "FAISS Vector Index",
+    "description": "FAISS IndexFlatIP stores 42 normalized vectors. The persisted index and JSON metadata allow restart without re-reading PDFs. Vector dimension: 1,008 corpus terms.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "b1271023-4762-48d8-99bf-103108f18ee6",
+    "position": 10,
+    "filepath": "src/pages/slides/Slide10.tsx",
+    "title": "Retrieval Example",
+    "description": "Query: \u201cWhat is the pet fee at ASH-CHI Loop?\u201d Retrieval returns policy passages with source/page and similarity. Staff should verify the live property profile before quoting a fee.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "bf5f5d64-541f-43c3-8db1-13fa029d948f",
+    "position": 11,
+    "filepath": "src/pages/slides/Slide11.tsx",
+    "title": "Answer Generation",
+    "description": "Configured hosted option: OpenAI-compatible gpt-4o-mini, temperature 0.0. No model key was available, so tested answers used an extractive local fallback; hosted generation is not verified.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "92f47589-f72a-4685-8c0f-c9d62ca68c9a",
+    "position": 12,
+    "filepath": "src/pages/slides/Slide12.tsx",
+    "title": "Grounding Rules",
+    "description": "Prompt policy: answer only from retrieved passages; preserve property/rate-plan qualifications; cite filename and page; do not invent fees or promises; state uncertainty and verify with the property.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "504bb0fd-bed6-40a8-9b11-3617fe991bdd",
+    "position": 13,
+    "filepath": "src/pages/slides/Slide13.tsx",
+    "title": "RAG Demonstration",
+    "description": "The local RAG route accepts a question, retrieves up to 3 passages, and returns a policy sentence plus citation. Fallback mode is explicitly labelled offline_extract.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "c0e505af-a908-4da6-9e23-39a1e815d20d",
+    "position": 14,
+    "filepath": "src/pages/slides/Slide14.tsx",
+    "title": "Evaluation Set",
+    "description": "Evaluation.csv contains 10 questions, expected answers, and reference context. Topics include check-in, cancellation, pet fees, smoking, service animals, refunds, and accessibility.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "0c97e364-bd18-489d-ad8d-4339d4bca034",
+    "position": 15,
+    "filepath": "src/pages/slides/Slide15.tsx",
+    "title": "Judge Model",
+    "description": "Rubric plan: DeepEval GEval with a separate gpt-4o judge. It was not run because an approved judge-model secret is not configured. No judge score is claimed.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "8f682a8b-640f-487a-9a38-c29fe202643f",
+    "position": 16,
+    "filepath": "src/pages/slides/Slide16.tsx",
+    "title": "Evaluation Measures",
+    "description": "Faithfulness: claims supported by retrieval. Contextual recall: evidence completeness. Contextual precision: evidence relevance. Answer relevancy: response addresses question. Current reported values are lexical proxies, not GEval.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "6a39d953-fa4c-4030-8d54-fd209016f833",
+    "position": 17,
+    "filepath": "src/pages/slides/Slide17.tsx",
+    "title": "Evaluation Results",
+    "description": "10/10 evaluation questions returned an answer. Offline proxies: support 1.000; context recall 0.625; context precision 0.123; answer overlap 0.387. These are not semantic judge scores.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "89f00e5b-b5d2-4cd6-b4fb-06b3498451a1",
+    "position": 18,
+    "filepath": "src/pages/slides/Slide18.tsx",
+    "title": "Held-Out Test Set",
+    "description": "test.xlsx was converted to test.csv and includes 10 held-out cases across booking channel, member offers, occupancy, accessible rooms, parking, breakfast, rate changes, checkout, pets, and card holds.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "363e127b-109e-42a3-9a54-6f1c5c256ed8",
+    "position": 19,
+    "filepath": "src/pages/slides/Slide19.tsx",
+    "title": "Test Results",
+    "description": "10/10 test questions returned an answer. Offline proxies: support 1.000; context recall 0.733; context precision 0.122; answer overlap 0.465. Low precision/relevancy show retrieval and response quality need tuning.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "b6645898-e140-411f-a868-0cbcb14b9024",
+    "position": 20,
+    "filepath": "src/pages/slides/Slide20.tsx",
+    "title": "Persisted Backend Index",
+    "description": "Backend persists policy.faiss and store.json under backend/index. The API loads this index at startup and returns the cited retrieval evidence.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "ad40717f-7b73-4ccc-acf3-fd5b7e788215",
+    "position": 21,
+    "filepath": "src/pages/slides/Slide21.tsx",
+    "title": "Flask API",
+    "description": "Flask routes: GET /health; POST /v1/relevant_chunks; POST /v1/answer; POST /v1/answer_with_relevant_chunks. Invalid or empty queries return HTTP 400.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "b66950b2-84d7-44da-8411-7fb43979c2c0",
+    "position": 22,
+    "filepath": "src/pages/slides/Slide22.tsx",
+    "title": "Backend Dependencies",
+    "description": "Backend: Flask, Gunicorn, FAISS CPU, NumPy, PyMuPDF, Requests. Frontend: Streamlit and Requests. Dockerfiles and Compose are included with the supporting source.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "5a4f3245-7a95-423d-a43b-47f64863fde4",
+    "position": 23,
+    "filepath": "src/pages/slides/Slide23.tsx",
+    "title": "Backend Container",
+    "description": "Backend Dockerfile serves port 7860 with Gunicorn. The vector index is copied into the image. Docker build/runtime has not been executed in this hosted project.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "ae12501a-07e3-4f39-81df-f281672af05f",
+    "position": 24,
+    "filepath": "src/pages/slides/Slide24.tsx",
+    "title": "Streamlit Interface",
+    "description": "Streamlit supports a staff question, top-k and response mode, answer display, and expandable source passages. It warns staff not to enter card or sensitive medical details.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "0c031342-4d8a-4a28-a7d6-c50ad5d9f0f7",
+    "position": 25,
+    "filepath": "src/pages/slides/Slide25.tsx",
+    "title": "Frontend Container",
+    "description": "Frontend Dockerfile serves Streamlit on port 8501; Compose connects it to the Flask service. This is a local deployment scaffold, not a Codespaces deployment record.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "0e412dbe-f0e8-4daa-9bd5-7b09a0293e81",
+    "position": 26,
+    "filepath": "src/pages/slides/Slide26.tsx",
+    "title": "GitHub Publication",
+    "description": "Not published: the GitHub integration card was dismissed. There is no repository URL or verified push. Backend/frontend files are available in the supporting project folder.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "33a89057-d742-470b-b8f4-b4b4c59844f5",
+    "position": 27,
+    "filepath": "src/pages/slides/Slide27.tsx",
+    "title": "Hosted Inference",
+    "description": "No public Codespaces URL or live inference screenshot exists. Do not submit a fabricated endpoint. This 6-point deployment-inference criterion remains unverified.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "90702eac-f49a-457b-8c75-86f0370268bf",
+    "position": 28,
+    "filepath": "src/pages/slides/Slide28.tsx",
+    "title": "Retrieved Evidence API",
+    "description": "Local API: POST /v1/relevant_chunks with {query, k}. Response includes retrieved content, source, page, and similarity. This validates local retrieval only, not forwarded online inference.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "6c3a9825-2374-477e-aee4-790353a9c194",
+    "position": 29,
+    "filepath": "src/pages/slides/Slide29.tsx",
+    "title": "Answer API",
+    "description": "Local API: POST /v1/answer_with_relevant_chunks. Response includes answer, mode, cited source chunks, and similarity. No hosted call was made.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "45d647f8-4840-4e02-809d-3a2998a6141d",
+    "position": 30,
+    "filepath": "src/pages/slides/Slide30.tsx",
+    "title": "APPENDIX",
+    "description": "AuroraStay RAG project presentation.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "bd7c31dc-2822-4244-a7d8-456595bfb7e3",
+    "position": 31,
+    "filepath": "src/pages/slides/Slide31.tsx",
+    "title": "Completion and Submission Checklist",
+    "description": "Submit the presentation PDF only for the low-code path. Keep the notebook as working evidence. Before claiming full rubric completion: run DeepEval, publish files to GitHub, deploy both containers in Codespaces, capture live inference, and replace proxy results with judge scores.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "8db7a348-e6a5-4d30-88e8-131ac81698f5",
+    "position": 32,
+    "filepath": "src/pages/slides/Slide32.tsx",
+    "title": "AuroraStay Policy Assistant",
+    "description": "AuroraStay RAG project presentation.",
+    "speakerNotes": ""
+  }
+]

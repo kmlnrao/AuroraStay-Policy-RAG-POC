@@ -1,0 +1,162 @@
+AuroraStay Hotels is a mid-sized hotel group operating 18 business and leisure properties across major cities in the USA. The group adds 3 to 4 new properties every year.
+
+Hotel staff handle around 1,200 guest queries per week related to:
+
+Room types
+
+Check-in/check-out
+
+Cancellation policies
+
+Refunds
+
+Breakfast
+
+Parking
+
+Pets
+
+Amenities
+
+Additional charges
+
+Simple queries can be answered using existing FAQs. However, around 40% of queries are complex and require information from multiple documents, such as:
+
+Booking terms
+
+Cancellation policies
+
+Room information
+
+Guest guidelines
+
+Manually combining this information takes 8 to 12 minutes per query and results in a 15% to 20% error rate, as answers may be incomplete or incorrect.
+
+As the hotel group grows, the number of properties and property-specific policies also increases. With 45% annual staff turnover, institutional knowledge is constantly lost.
+
+Objective
+
+The objective is to build a POC for a user interface for AuroraStay Hotels where hotel staff can enter natural-language questions and receive answers based on the hotel's documents.
+
+The application should:
+
+Provide a simple UI where staff can enter their questions.
+
+Retrieve the most relevant information from the hotel's document collection.
+
+Generate an answer grounded only in the retrieved information.
+
+Display the supporting source information along with the answer.
+
+Reduce the number of queries that require manual lookup or escalation, rather than focusing on reducing the time spent handling each query.
+
+Since this is a POC, the application will initially be internal-facing. This will allow the hotel team to test it extensively, ensure that user queries are answered consistently, and validate the accuracy and reliability of the system before deploying it for broader use.
+
+Note: At this stage, the objective is not to reduce query-handling time. The primary objective is to determine whether the system can reliably answer a meaningful proportion of queries without requiring manual effort.
+
+Policy Documents
+aurorastay_booking_terms_and_cancellation_policy.pdf (5 pages)
+Covers individual transient reservation terms, including Flexible, Advance Purchase, member/promotional, and group rate plan rules; cancellation deadlines; no-show charges; modification procedures; taxes and deposit handling; and a six-property quick-reference matrix.
+
+aurorastay_room_and_property_information.pdf (5 pages)
+Details room types and occupancy limits, including King, Double Queen, Accessible King, and Suite rooms; check-in/check-out times; early arrival and late departure handling; guest amenities such as breakfast, Wi-Fi, fitness facilities, luggage storage, and cribs; parking and pet policies; service animal procedures; and accessibility request guidelines.
+
+aurorastay_refunds_and_additional_charges_guide.pdf (4 pages)
+Outlines refund eligibility for Flexible, Advance Purchase, duplicate, and service-recovery scenarios; itemized additional charges such as parking, pet fees, late checkout, smoking remediation, damage, and lost keys; incidentals authorization and release procedures; and the five-step refund dispute workflow.
+
+aurorastay_guest_conduct_accessibility_and_resolution_guidelines.pdf (5 pages)
+Defines guest conduct rules covering quiet hours, smoking, threats, illegal activity, and visitors; ADA accessibility and service animal handling; safety and privacy protocols; the five-stage complaint resolution process; and the escalation matrix for danger, discrimination, privacy, charge disputes, and legal or media requests.
+
+Evaluation and Test Data Files
+evaluation.csv (10 queries)
+Contains benchmark evaluation queries with expected answers and relevant policy contexts covering check-in times, cancellation rules, pet fees, smoking charges, service animals, refunds, and accessibility procedures.
+
+test.xlsx (10 queries)
+Contains test queries with expected answers and relevant contexts for evaluating the pipeline across booking, property information, guest conduct, and refund policy scenarios.
+
+Choosing Your Path
+
+The project is available under multiple paths, so you can build toward the role you actually aspire to be in. Here's a quick guide to help you pick the path that fits your career aspirations.
+
+Full-Code Path: Choose this if you see yourself in hands-on technical roles - writing, building, and shipping solutions from the ground up.
+This path suits aspiring developers, data scientists, and engineers who enjoy working directly with code, debugging, and owning the technical craft of a solution end-to-end.
+Low-Code Path: Choose this if you're headed toward leadership or client-facing positions where you need to code without necessarily writing it day-to-day.
+The focus here is on reviewing solutions, interpreting outputs, making informed recommendations, and translating technical work into business language, and is suitable for future team leads, product managers, and consultants.
+General Submission Guidelines
+Submissions found copied or plagiarized from other learners will be marked zero.
+Post-deadline submissions will not be accepted for evaluation.
+For common project-related queries, refer to the FAQ page(s).
+Path-wise Submission Guidelines
+Below is a concise breakdown of the solution approach, submission format, and best practices for each path, so that you know exactly what to build, how to present it, and what to submit.
+
+Full-Code Path
+Solution Approach
+You'll receive a notebook template with section headers aligned to the rubric. 
+Write the required code under each section. 
+Plan your approach before coding, use markdown cells to narrate your reasoning, and add inline comments for non-obvious logic. 
+Run all cells top-to-bottom with a clean kernel - every expected output must be visible, with no errors.
+Address all rubric sections meaningfully
+Submission Format
+Export the notebook to HTML and verify it renders correctly in a browser before submitting. 
+Only the .html file is accepted- .ipynb files will not be evaluated.
+Best Practices
+Do:
+Follow consistent naming conventions
+Display outputs (plots, tables) explicitly rather than just computing them
+Narrate your logic through markdown cells between code blocks
+Don't:
+Submit the .ipynb file
+Leave cells unexecuted or with errors
+Skip sections
+Low-Code Path
+Solution Approach
+You'll receive a pre-filled notebook with partial code - certain cells contain blanks and commented code snippets scoped to specific tasks. 
+Fill in the blanks, uncomment the relevant code snippets, run the notebook end-to-end, and capture outputs (charts, tables, printed results) via cropped, labelled screenshots. 
+Then transfer your findings, insights, and recommendations into a business presentation (a sample business presentation template is provided).
+Address all rubric sections meaningfully
+Submission Format
+Submit the completed presentation as a .pdf file (not .pptx). 
+The notebook itself is not to be submitted.
+Best Practices
+Do:
+Your presentation should cover a business overview of the problem and solution approach, key findings and insights that can drive decisions, and clear business recommendations. 
+Articulate insights in your own words.
+Explain what each visualization shows and why it matters, and back recommendations with data. 
+Including the potential benefits of implementing the solution will give your submission an edge. 
+Don't: 
+Paste raw code or tracebacks into slides
+Submit the notebook, or copy outputs without explaining their significance.
+Power Ahead!
+Rubric
+Criteria
+Data Understanding: load and view the documents, and comment on document structure and details.
+Points
+2
+Criteria
+Retrieval Augmented Generation System: implement chunking by choosing an embedding model, defining a chunker, and chunking documents; build the vector database by loading the embedding model, creating the vector DB, and defining the retrieval system; and define the generation system by loading the LLM, defining the generation system, and defining the RAG function.
+Points
+16
+Criteria
+Evaluation: load the evaluation data, define the evaluation model, define the evaluation metrics (Faithfulness, Contextual Recall, Contextual Precision, Answer Relevancy), build and run the evaluation on evaluation cases, load the test data, and build and run the evaluation on test cases.
+Points
+6
+Criteria
+Deployment - Backend: serialize the vector database, define the Flask application, define the dependencies, and define the Dockerfile.
+Points
+9
+Criteria
+Deployment - Frontend: define the Streamlit application, define the dependencies, define the Dockerfile, and push the files to GitHub.
+Points
+9
+Criteria
+Deployment - Inference: define the forwarded URL, and implement online inference to generate the response and print the relevant chunks.
+Points
+6
+Criteria
+Actionable Insights and Recommendations: write down insights from the analysis conducted, and provide actionable business recommendations.
+Points
+4
+Criteria
+Presentation/Notebook: demonstrate overall quality, structure and flow, and a conclusion with business recommendations; for presentation submissions, also show crispness and visual appeal; for notebook submissions, also provide well-commented code.
+Points
+8
