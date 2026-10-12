@@ -1,6 +1,0 @@
-Metric,Value
-Task Completion Rate,100.0%
-Escalation Accuracy,100.0%
-Tool Call Accuracy,100.0%
-Reasoning Coherence (Average),5.00/5.0
-Latency (Average),0.01s
