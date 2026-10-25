@@ -118,3 +118,17 @@ mtime_ms = 1791759799312
 storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/7a2653b6-6cfd-4c0e-bad5-aaa934a3aec4/a59326ed-5f5e-4e89-967b-792169ad9007"
 storage_version_token = "1791759822012199"
 content_type = "application/octet-stream"
+
+[[outputs]]
+id = "Suy25iwaMpgGJMRv9p8Tv"
+uri = "file://AuroraStay_RAG_Project_Upload.zip"
+type = "unspecified"
+title = "AuroraStay RAG Project (ZIP)"
+description = "Downloadable bundle with the project source, policy/data files, completed notebook, evaluation outputs, Docker setup, and submission PDF."
+logical_id = "a1158cbe-dbe0-4f9a-8641-2a9703f78877"
+content_hash = "sha256:cb2477ff8ed087d4844cf7b5806af361f4f210c57e12766c24695cd9d0b3834c"
+size = 285519
+mtime_ms = 1791777922760
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/a1158cbe-dbe0-4f9a-8641-2a9703f78877/f2fd531e-ea00-4394-b202-53803dd55200"
+storage_version_token = "1792887003376108"
+content_type = "application/octet-stream"
