@@ -29,7 +29,7 @@ cells = [
     nbf.v4.new_markdown_cell("## 1. Data understanding and document extraction"),
     nbf.v4.new_code_cell(
         "pages = read_policy_pages(ROOT / 'Data')\n"
-        "chunks = chunk_pages(pages, chunk_words=190, overlap=35)\n"
+        "chunks = chunk_pages(pages, chunk_words=120, overlap=20)\n"
         "print(f'Policy PDFs: {len(list((ROOT / \"Data\").glob(\"*.pdf\")))}')\n"
         "print(f'Extracted pages: {len(pages)} | chunks: {len(chunks)}')\n"
         "print('Sample metadata:', {k: chunks[0][k] for k in ('source','page')})\n"
@@ -37,7 +37,7 @@ cells = [
     ),
     nbf.v4.new_markdown_cell(
         "## 2. Chunking, local embeddings, and vector database\n"
-        "Each page is split into 190-word chunks with 35-word overlap. The local "
+        "Each page is split into 120-word chunks with 20-word overlap. The local "
         "corpus-fitted TF-IDF embedder creates normalized vectors; FAISS "
         "IndexFlatIP returns cosine-ranked passages. This avoids model downloads "
         "and retains source filename/page metadata."

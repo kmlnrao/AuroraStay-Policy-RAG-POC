@@ -1,6 +1,6 @@
 [
   {
-    "id": "9af75d16-19e0-4388-951f-4ed923578b76",
+    "id": "f5b4187c-a62b-4119-a247-a75e26ff961a",
     "position": 1,
     "filepath": "src/pages/slides/Slide1.tsx",
     "title": "AuroraStay Policy Assistant",
@@ -8,7 +8,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "fc4d96db-d3e5-4492-a760-e3ab5d07e94b",
+    "id": "5ebf1c1a-ee44-4781-b0cc-470c7b7ac66d",
     "position": 2,
     "filepath": "src/pages/slides/Slide2.tsx",
     "title": "Contents / Agenda",
@@ -16,7 +16,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "d70304cc-c39e-4549-8d6e-6610d248fbd5",
+    "id": "635082b9-eb59-43ac-b386-07c6fa6a1438",
     "position": 3,
     "filepath": "src/pages/slides/Slide3.tsx",
     "title": "Executive Summary",
@@ -24,7 +24,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "6167600d-f5c4-40d1-8bf7-029250eeb522",
+    "id": "db5b5696-1e15-43c7-9d08-dd4fc0b31021",
     "position": 4,
     "filepath": "src/pages/slides/Slide4.tsx",
     "title": "Business Problem and Solution",
@@ -32,7 +32,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "e2654ee4-a6f9-4831-8558-78e49b5ec111",
+    "id": "3e2bf22b-8af9-4151-88f1-68b4d4130ba1",
     "position": 5,
     "filepath": "src/pages/slides/Slide5.tsx",
     "title": "Policy Data",
@@ -40,7 +40,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "8508246c-933b-40bf-83a6-1a774e3f1933",
+    "id": "f0cedf5d-c5c1-46a2-a7f6-a79478602e9e",
     "position": 6,
     "filepath": "src/pages/slides/Slide6.tsx",
     "title": "Text Representation",
@@ -48,31 +48,31 @@
     "speakerNotes": ""
   },
   {
-    "id": "e5db4c02-167d-4038-838e-8705781bd187",
+    "id": "b03649e0-e0b2-456b-8902-0881d7ba4d3f",
     "position": 7,
     "filepath": "src/pages/slides/Slide7.tsx",
     "title": "Chunk Design",
-    "description": "Recursive word-window chunking: 190 words per chunk, 35-word overlap; each chunk retains source PDF and page. Smaller, policy-section-aware chunks are a recommended next retrieval improvement.",
+    "description": "Recursive word-window chunking: 120 words per chunk, 20-word overlap; each chunk retains source PDF and page. This measured setting improves precision and answer overlap proxies while reducing context recall.",
     "speakerNotes": ""
   },
   {
-    "id": "43cfebb5-f7b5-4a03-906d-b0e380235faa",
+    "id": "18f51753-9b45-4b5d-a799-59fc1c5ba375",
     "position": 8,
     "filepath": "src/pages/slides/Slide8.tsx",
     "title": "Policy Chunk Example",
-    "description": "42 chunks from 19 pages. Example: \u201cASH-CHI Loop lists a $50 per night pet fee, capped at $150 per stay.\u201d Citation metadata is retained as source filename and page.",
+    "description": "61 chunks from 19 pages. Example: \u201cASH-CHI Loop lists a $50 per night pet fee, capped at $150 per stay.\u201d Citation metadata is retained as source filename and page.",
     "speakerNotes": ""
   },
   {
-    "id": "172b6ad7-e505-4d4d-8d7b-dbda16994106",
+    "id": "cf1f5218-70be-4d81-8421-0428b967f159",
     "position": 9,
     "filepath": "src/pages/slides/Slide9.tsx",
     "title": "FAISS Vector Index",
-    "description": "FAISS IndexFlatIP stores 42 normalized vectors. The persisted index and JSON metadata allow restart without re-reading PDFs. Vector dimension: 1,008 corpus terms.",
+    "description": "FAISS IndexFlatIP stores 61 normalized vectors. The persisted index and JSON metadata allow restart without re-reading PDFs. Vector dimension: 1,008 corpus terms.",
     "speakerNotes": ""
   },
   {
-    "id": "b1271023-4762-48d8-99bf-103108f18ee6",
+    "id": "5b6aaee2-db4b-4263-b1ac-08ca273b8470",
     "position": 10,
     "filepath": "src/pages/slides/Slide10.tsx",
     "title": "Retrieval Example",
@@ -80,7 +80,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "bf5f5d64-541f-43c3-8db1-13fa029d948f",
+    "id": "42c5eb2a-0ba2-43e0-ad33-e7358c2f6d52",
     "position": 11,
     "filepath": "src/pages/slides/Slide11.tsx",
     "title": "Answer Generation",
@@ -88,7 +88,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "92f47589-f72a-4685-8c0f-c9d62ca68c9a",
+    "id": "f6f8358a-d464-4c81-a53f-34a05b501042",
     "position": 12,
     "filepath": "src/pages/slides/Slide12.tsx",
     "title": "Grounding Rules",
@@ -96,7 +96,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "504bb0fd-bed6-40a8-9b11-3617fe991bdd",
+    "id": "17ae3791-a9e5-45a5-a3b3-f35dd971b551",
     "position": 13,
     "filepath": "src/pages/slides/Slide13.tsx",
     "title": "RAG Demonstration",
@@ -104,7 +104,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "c0e505af-a908-4da6-9e23-39a1e815d20d",
+    "id": "60f37417-5ae4-4971-a0d2-88eb709092dc",
     "position": 14,
     "filepath": "src/pages/slides/Slide14.tsx",
     "title": "Evaluation Set",
@@ -112,7 +112,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "0c97e364-bd18-489d-ad8d-4339d4bca034",
+    "id": "9a996bb0-c186-4150-915d-d25b205fd881",
     "position": 15,
     "filepath": "src/pages/slides/Slide15.tsx",
     "title": "Judge Model",
@@ -120,7 +120,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "8f682a8b-640f-487a-9a38-c29fe202643f",
+    "id": "97407faf-2091-4808-8656-37d48936b987",
     "position": 16,
     "filepath": "src/pages/slides/Slide16.tsx",
     "title": "Evaluation Measures",
@@ -128,15 +128,15 @@
     "speakerNotes": ""
   },
   {
-    "id": "6a39d953-fa4c-4030-8d54-fd209016f833",
+    "id": "4245946a-93af-4e3d-8617-cf4a55413834",
     "position": 17,
     "filepath": "src/pages/slides/Slide17.tsx",
     "title": "Evaluation Results",
-    "description": "10/10 evaluation questions returned an answer. Offline proxies: support 1.000; context recall 0.625; context precision 0.123; answer overlap 0.387. These are not semantic judge scores.",
+    "description": "10/10 evaluation questions returned an answer. Offline proxies: support 1.000; context recall 0.574; context precision 0.164; answer overlap 0.449. Precision and overlap improved versus the prior chunk setting; recall fell. Not semantic judge scores.",
     "speakerNotes": ""
   },
   {
-    "id": "89f00e5b-b5d2-4cd6-b4fb-06b3498451a1",
+    "id": "5a875681-b62e-4045-a7c7-fc251cd15c68",
     "position": 18,
     "filepath": "src/pages/slides/Slide18.tsx",
     "title": "Held-Out Test Set",
@@ -144,15 +144,15 @@
     "speakerNotes": ""
   },
   {
-    "id": "363e127b-109e-42a3-9a54-6f1c5c256ed8",
+    "id": "a6070ae6-b4bd-48c8-bb55-d304166c920e",
     "position": 19,
     "filepath": "src/pages/slides/Slide19.tsx",
     "title": "Test Results",
-    "description": "10/10 test questions returned an answer. Offline proxies: support 1.000; context recall 0.733; context precision 0.122; answer overlap 0.465. Low precision/relevancy show retrieval and response quality need tuning.",
+    "description": "10/10 test questions returned an answer. Offline proxies: support 1.000; context recall 0.704; context precision 0.158; answer overlap 0.455. Precision improved versus the prior chunk setting; recall fell. Not semantic judge scores.",
     "speakerNotes": ""
   },
   {
-    "id": "b6645898-e140-411f-a868-0cbcb14b9024",
+    "id": "7dd55368-dbf1-4dd9-a71c-0701824d91b5",
     "position": 20,
     "filepath": "src/pages/slides/Slide20.tsx",
     "title": "Persisted Backend Index",
@@ -160,7 +160,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "ad40717f-7b73-4ccc-acf3-fd5b7e788215",
+    "id": "2fc6ea7f-6f4b-42f6-898f-f2831deb6ea0",
     "position": 21,
     "filepath": "src/pages/slides/Slide21.tsx",
     "title": "Flask API",
@@ -168,7 +168,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "b66950b2-84d7-44da-8411-7fb43979c2c0",
+    "id": "1078412e-1471-412a-b611-fe2bbfcec97b",
     "position": 22,
     "filepath": "src/pages/slides/Slide22.tsx",
     "title": "Backend Dependencies",
@@ -176,7 +176,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "5a4f3245-7a95-423d-a43b-47f64863fde4",
+    "id": "746fb82f-aa1d-4415-aadf-d0902316a5de",
     "position": 23,
     "filepath": "src/pages/slides/Slide23.tsx",
     "title": "Backend Container",
@@ -184,7 +184,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "ae12501a-07e3-4f39-81df-f281672af05f",
+    "id": "555470d6-7888-49ef-9664-2e8b80b4a072",
     "position": 24,
     "filepath": "src/pages/slides/Slide24.tsx",
     "title": "Streamlit Interface",
@@ -192,7 +192,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "0c031342-4d8a-4a28-a7d6-c50ad5d9f0f7",
+    "id": "95ac835b-b59d-4e20-83d3-b552d345fd54",
     "position": 25,
     "filepath": "src/pages/slides/Slide25.tsx",
     "title": "Frontend Container",
@@ -200,7 +200,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "0e412dbe-f0e8-4daa-9bd5-7b09a0293e81",
+    "id": "03166411-dee9-4996-8e78-a4f0490ed3f1",
     "position": 26,
     "filepath": "src/pages/slides/Slide26.tsx",
     "title": "GitHub Publication",
@@ -208,7 +208,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "33a89057-d742-470b-b8f4-b4b4c59844f5",
+    "id": "655de024-6e77-41cd-856a-d3413d76dec9",
     "position": 27,
     "filepath": "src/pages/slides/Slide27.tsx",
     "title": "Hosted Inference",
@@ -216,7 +216,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "90702eac-f49a-457b-8c75-86f0370268bf",
+    "id": "b98661e2-d16a-42fd-b16c-9b4cb6041240",
     "position": 28,
     "filepath": "src/pages/slides/Slide28.tsx",
     "title": "Retrieved Evidence API",
@@ -224,7 +224,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "6c3a9825-2374-477e-aee4-790353a9c194",
+    "id": "879c7d71-51bf-4265-ab95-73984c9abcf7",
     "position": 29,
     "filepath": "src/pages/slides/Slide29.tsx",
     "title": "Answer API",
@@ -232,7 +232,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "45d647f8-4840-4e02-809d-3a2998a6141d",
+    "id": "fc78e582-dedb-4c4d-9546-b2c3fa52ee63",
     "position": 30,
     "filepath": "src/pages/slides/Slide30.tsx",
     "title": "APPENDIX",
@@ -240,7 +240,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "bd7c31dc-2822-4244-a7d8-456595bfb7e3",
+    "id": "69dc395d-3b2b-405c-a05f-e6c4632b70b4",
     "position": 31,
     "filepath": "src/pages/slides/Slide31.tsx",
     "title": "Completion and Submission Checklist",
@@ -248,7 +248,7 @@
     "speakerNotes": ""
   },
   {
-    "id": "8db7a348-e6a5-4d30-88e8-131ac81698f5",
+    "id": "9c442ef8-fc93-4f0d-b144-ebb2ff25666e",
     "position": 32,
     "filepath": "src/pages/slides/Slide32.tsx",
     "title": "AuroraStay Policy Assistant",

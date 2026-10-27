@@ -139,7 +139,7 @@ const Slide9: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"FAISS IndexFlatIP stores 42 normalized vectors. The persisted index and JSON metadata allow restart without re-reading PDFs. Vector dimension: 1,008 corpus terms."}</span></p></div><div key={6} style={{
+          }}>{"FAISS IndexFlatIP stores 61 normalized vectors. The persisted index and JSON metadata allow restart without re-reading PDFs. Vector dimension: 1,008 corpus terms."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",

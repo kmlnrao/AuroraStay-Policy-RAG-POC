@@ -47,7 +47,7 @@ def read_policy_pages(data_dir: str | Path) -> list[dict]:
     return pages
 
 
-def chunk_pages(pages: list[dict], chunk_words: int = 190, overlap: int = 35) -> list[dict]:
+def chunk_pages(pages: list[dict], chunk_words: int = 120, overlap: int = 20) -> list[dict]:
     chunks = []
     for page in pages:
         words = page["text"].split()

@@ -139,7 +139,7 @@ const Slide7: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"Recursive word-window chunking: 190 words per chunk, 35-word overlap; each chunk retains source PDF and page. Smaller, policy-section-aware chunks are a recommended next retrieval improvement."}</span></p></div><div key={6} style={{
+          }}>{"Recursive word-window chunking: 120 words per chunk, 20-word overlap; each chunk retains source PDF and page. This measured setting improves precision and answer overlap proxies while reducing context recall."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",

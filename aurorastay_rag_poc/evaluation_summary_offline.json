@@ -1,18 +1,18 @@
 {
   "Evaluation": {
     "cases": 10,
-    "context_recall_proxy": 0.625,
-    "context_precision_proxy": 0.123,
+    "context_recall_proxy": 0.574,
+    "context_precision_proxy": 0.164,
     "extractive_support_proxy": 1.0,
-    "answer_relevancy_proxy": 0.387,
+    "answer_relevancy_proxy": 0.449,
     "answers_returned": 10
   },
   "Test": {
     "cases": 10,
-    "context_recall_proxy": 0.733,
-    "context_precision_proxy": 0.122,
+    "context_recall_proxy": 0.704,
+    "context_precision_proxy": 0.158,
     "extractive_support_proxy": 1.0,
-    "answer_relevancy_proxy": 0.465,
+    "answer_relevancy_proxy": 0.455,
     "answers_returned": 10
   }
 }

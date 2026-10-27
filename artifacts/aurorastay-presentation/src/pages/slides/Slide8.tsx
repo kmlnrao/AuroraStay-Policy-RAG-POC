@@ -139,7 +139,7 @@ const Slide8: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"42 chunks from 19 pages. Example: “ASH-CHI Loop lists a $50 per night pet fee, capped at $150 per stay.” Citation metadata is retained as source filename and page."}</span></p></div><div key={6} style={{
+          }}>{"61 chunks from 19 pages. Example: “ASH-CHI Loop lists a $50 per night pet fee, capped at $150 per stay.” Citation metadata is retained as source filename and page."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",

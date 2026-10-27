@@ -8,7 +8,8 @@ requests them.
 
 ## Current evidence and limits
 
-- The four supplied policy PDFs extract to 19 pages and 42 overlapping chunks.
+- The four supplied policy PDFs extract to 19 pages and 61 overlapping chunks
+  using 120-word chunks with 20-word overlap.
 - The index is a persisted FAISS inner-product index over normalized local
   TF-IDF vectors. It is deterministic and runs without model downloads.
 - `Data/evaluation.csv` and `Data/test.csv` contain 10 cases each. Run

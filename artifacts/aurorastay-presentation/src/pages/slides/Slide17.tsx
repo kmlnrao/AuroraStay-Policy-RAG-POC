@@ -139,7 +139,7 @@ const Slide17: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"10/10 evaluation questions returned an answer. Offline proxies: support 1.000; context recall 0.625; context precision 0.123; answer overlap 0.387. These are not semantic judge scores."}</span></p></div><div key={6} style={{
+          }}>{"10/10 evaluation questions returned an answer. Offline proxies: support 1.000; context recall 0.574; context precision 0.164; answer overlap 0.449. Precision and overlap improved versus the prior chunk setting; recall fell. Not semantic judge scores."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",

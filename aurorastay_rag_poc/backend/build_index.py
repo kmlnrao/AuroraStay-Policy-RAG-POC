@@ -8,7 +8,7 @@ DATA = ROOT / "Data"
 INDEX_DIR = Path(__file__).resolve().parent / "index"
 
 pages = read_policy_pages(DATA)
-chunks = chunk_pages(pages, chunk_words=190, overlap=35)
+chunks = chunk_pages(pages, chunk_words=120, overlap=20)
 store = TfidfFaissStore.build(chunks)
 store.save(INDEX_DIR)
 
