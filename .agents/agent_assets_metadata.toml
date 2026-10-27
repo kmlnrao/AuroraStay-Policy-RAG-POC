@@ -109,14 +109,14 @@ content_type = "application/pdf"
 id = "9oxEvOe3Eh8vt88K171N7"
 uri = "file://aurorastay_rag_poc/AuroraStay_RAG_Completed.ipynb"
 type = "unspecified"
-title = "AuroraStay Completed Notebook (Executed)"
-description = "Final supporting notebook with all five code cells executed and saved outputs for policy extraction, sample retrieval, and both 10-question offline evaluation splits."
+title = "AuroraStay Completed Notebook (Updated)"
+description = "Executed notebook with refreshed 61-chunk index and all 20 offline evaluation/test cases."
 logical_id = "7a2653b6-6cfd-4c0e-bad5-aaa934a3aec4"
-content_hash = "sha256:7255cf030d89ab4d4f86e427a30822cc099b887d22aaaca02d6a614eea6c1495"
-size = 18639
-mtime_ms = 1791759799312
-storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/7a2653b6-6cfd-4c0e-bad5-aaa934a3aec4/a59326ed-5f5e-4e89-967b-792169ad9007"
-storage_version_token = "1791759822012199"
+content_hash = "sha256:c44266416aafa03ddbe86ea3005bf8aa651cabdccf656b842baec3924a80e843"
+size = 18645
+mtime_ms = 1793067948975
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/7a2653b6-6cfd-4c0e-bad5-aaa934a3aec4/2b988541-56e2-4d31-8003-4c375dfc3dc4"
+storage_version_token = "1793068015375635"
 content_type = "application/octet-stream"
 
 [[outputs]]
@@ -132,3 +132,17 @@ mtime_ms = 1791777922760
 storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/a1158cbe-dbe0-4f9a-8641-2a9703f78877/f2fd531e-ea00-4394-b202-53803dd55200"
 storage_version_token = "1792887003376108"
 content_type = "application/octet-stream"
+
+[[outputs]]
+id = "Rwr01_OfyB-SFpmx698E6"
+uri = "file://.local/outputs/AuroraStay-Policy-Assistant-Improved-Submission.pdf"
+type = "pdf"
+title = "AuroraStay Policy Assistant Improved Submission (PDF)"
+description = "Updated 32-slide presentation with the measured 120-word/20-overlap retrieval tradeoff and freshly rerun offline results. These remain labeled as proxies, not DeepEval scores."
+logical_id = "23d7c755-152e-41ec-b32c-687f234b39cd"
+content_hash = "sha256:2b68775714ef46a72adbe42efb6aa1ccc0bc151eace7aab622daa0d1d70dceef"
+size = 247424
+mtime_ms = 1793068012438
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/23d7c755-152e-41ec-b32c-687f234b39cd/4a1b3fa7-ac66-4e16-b906-b99b70643b93"
+storage_version_token = "1793068014041651"
+content_type = "application/pdf"
