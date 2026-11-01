@@ -84,7 +84,7 @@
     "position": 11,
     "filepath": "src/pages/slides/Slide11.tsx",
     "title": "Answer Generation",
-    "description": "Groq-hosted openai/gpt-oss-120b generated a cited answer for the ASH-CHI Loop pet-fee query. Verified response mode: groq; the answer correctly states $50 per night, capped at $150 per stay. Verified with the Replit API test client; not Codespaces deployment evidence.",
+    "description": "OpenAI gpt-5-mini generated a cited answer for the ASH-CHI Loop pet-fee query through the OpenAI-backed RAG route. Verified response mode: openai; answer states $50 per night, capped at $150 per stay. Not Codespaces deployment evidence.",
     "speakerNotes": ""
   },
   {

@@ -1,1 +1,2 @@
 - [Groq policy-answer reliability](groq-policy-answer-reliability.md) — preserve explicit table row/column handling; the larger Groq model was more accurate on property fee tables.
+- [Compose secret expansion](compose-secret-expansion.md) — resolved Compose configuration can print injected secret values; validate quietly and never emit the full config.

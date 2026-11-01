@@ -28,6 +28,10 @@ requests them.
   `groq`; without a key the API returns a cited extractive answer labeled
   `offline_extract`. If a hosted request fails, the fallback is labeled
   `offline_extract_fallback`.
+- Set `LLM_PROVIDER=openai` with `OPENAI_API_KEY` to use OpenAI Responses API;
+  the default model is `gpt-5-mini` and successful responses are labeled
+  `openai`. Set `LLM_PROVIDER=groq` to keep the existing Groq path. Never put
+  either provider key in this folder, notebook, or presentation.
 - Keep `GROQ_API_KEY` in Replit Secrets or Codespaces Secrets as appropriate;
   the two environments do not share secrets. Never put an API key or token in
   this folder, notebook, or presentation.
@@ -52,10 +56,10 @@ The API listens on port 7860; Streamlit listens on port 8501. The offline
 extractor is an engineering fallback, not a substitute for the hosted LLM and
 independent rubric evaluation.
 
-To use Groq with Docker Compose, make `GROQ_API_KEY` available to the shell
-running Compose. Optionally set `GROQ_MODEL` to another currently supported
-Groq chat model. The compose file passes the key only into the backend
-container; do not commit it or paste it into screenshots.
+To use a hosted provider with Docker Compose, make its key available to the
+shell running Compose and set `LLM_PROVIDER` to `openai` or `groq`. The compose
+file passes the provider keys only into the backend container. Optionally set
+`OPENAI_MODEL` or `GROQ_MODEL`; do not commit keys or paste them into screenshots.
 
 For direct API calls, send `Authorization: Bearer <API_ACCESS_KEY>` to
 `/v1/relevant_chunks`, `/v1/answer`, and

@@ -56,22 +56,28 @@ def relevant_chunks():
 def answer():
     data = request.get_json(silent=True) or {}
     try:
+        provider = str(
+            data.get("provider") or os.getenv("LLM_PROVIDER", "groq")
+        ).strip().lower()
+        model_env = "OPENAI_MODEL" if provider == "openai" else "GROQ_MODEL"
+        default_model = "gpt-5-mini" if provider == "openai" else "openai/gpt-oss-120b"
         result = public_result(
             data.get("query"),
             data.get("k", 3),
             store,
             include_answer=True,
-            model=data.get("model_name") or os.getenv(
-                "GROQ_MODEL", "openai/gpt-oss-120b"
-            ),
+            model=data.get("model_name") or os.getenv(model_env, default_model),
             temperature=data.get("temperature", 0.0),
             max_tokens=data.get("max_tokens", 1024),
+            provider=provider,
         )
         if request.path.endswith("/answer"):
             result.pop("relevant_chunks", None)
         return jsonify(result)
     except (TypeError, ValueError) as exc:
         return jsonify({"error": str(exc)}), 400
+    except RuntimeError as exc:
+        return jsonify({"error": str(exc)}), 502
 
 
 if __name__ == "__main__":

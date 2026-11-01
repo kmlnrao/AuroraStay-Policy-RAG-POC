@@ -11,10 +11,13 @@ cells = [
         "The PDF presentation is the required submission; this notebook is a "
         "supporting, reproducible artifact.\n\n"
         "**Execution note:** retrieval uses the local FAISS/TF-IDF baseline. "
-        "When `GROQ_API_KEY` is configured, the answer demonstration uses Groq "
-        "(`openai/gpt-oss-120b` by default); otherwise it reports "
-        "`offline_extract`. The pet-fee Groq answer was verified in Replit, not "
-        "through Codespaces. Official DeepEval GEval results are included for "
+        "Choose Groq (`LLM_PROVIDER=groq`) or OpenAI "
+        "(`LLM_PROVIDER=openai`, `OPENAI_API_KEY`, `gpt-5-mini` by default); "
+        "without the selected provider's key, it reports "
+        "`offline_extract`. Both the Groq demonstration and OpenAI-backed "
+        "pet-fee route were verified in Replit, not through Codespaces. The "
+        "OpenAI response and citations are recorded "
+        "in `openai_demo_result.json`. Official DeepEval GEval results are included for "
         "20 cases; the offline lexical proxies remain separate diagnostics."
     ),
     nbf.v4.new_code_cell(
@@ -65,6 +68,15 @@ cells = [
         "    print(f\"\\n{item['source']} p.{item['page']} (score={item['score']})\")\n"
         "    print(item['content'][:350])"
     ),
+    nbf.v4.new_code_cell(
+        "openai_demo = json.loads((ROOT / 'openai_demo_result.json').read_text())\n"
+        "print('Verified backend mode:', openai_demo['mode'])\n"
+        "print('Model:', openai_demo['model'])\n"
+        "print('Question:', openai_demo['query'])\n"
+        "print('Answer:', openai_demo['answer'])\n"
+        "print('Citations:', ', '.join(f\"{x['source']} p.{x['page']}\" "
+        "for x in openai_demo['sources']))"
+    ),
     nbf.v4.new_markdown_cell(
         "## 4. Evaluation and held-out test set\n"
         "The four local checks below are diagnostic proxies only. A separate "
@@ -95,8 +107,9 @@ cells = [
         "`frontend/Dockerfile`; `docker-compose.yml` wires them together.\n"
         "- Routes: `/health`, `/v1/relevant_chunks`, `/v1/answer`, "
         "`/v1/answer_with_relevant_chunks`.\n"
-        "- Groq-hosted generation was verified in Replit. This does not verify "
-        "Codespaces inference; add the secret separately there and capture the "
+        "- OpenAI gpt-5-mini generation was verified through the backend route "
+        "in Replit. This does not verify Codespaces inference; add "
+        "`OPENAI_API_KEY` and `API_ACCESS_KEY` separately there and capture the "
         "forwarded app/API evidence before claiming deployment.\n"
         "- Keep API credentials only in the hosting provider's secret manager."
     ),

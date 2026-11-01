@@ -139,7 +139,7 @@ const Slide11: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"Groq openai/gpt-oss-120b generated a cited answer. Response mode: groq."}</span></p></div><div key={6} style={{
+          }}>{"OpenAI gpt-5-mini generated a cited answer from retrieved policy passages. Response mode: openai."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",
@@ -160,7 +160,7 @@ const Slide11: React.FC = () => {
             fontFamily: "'Nunito', sans-serif",
             fontWeight: "700",
             color: "#000000"
-          }}>{"Pet-fee test: $50/night, $150 cap. Verified in Replit; not a Codespaces run."}</span><span style={{
+          }}>{"OpenAI output: $50/night; $150 stay cap. Sources: policy PDFs, p. 4."}</span><span style={{
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"

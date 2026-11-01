@@ -1,0 +1,23 @@
+{
+  "query": "What is the pet fee at ASH-CHI Loop?",
+  "mode": "openai",
+  "model": "gpt-5-mini",
+  "answer": "Property/rate-plan qualification: ASH-CHI Loop (Chicago, IL) — verify the guest’s live property profile and rate confirmation before quoting. [aurorastay_refunds_and_additional_charges_guide.pdf, p. 4]\n\nStated pet fee (property table): $50 per night, $150 stay cap. [aurorastay_refunds_and_additional_charges_guide.pdf, p. 4]\n\nCorroborating entry: same $50 per night, $150 stay cap listed in booking terms. No pet-count limit is specified in the provided evidence for ASH-CHI Loop; verify with the property if a maximum number/other restrictions apply. [aurorastay_booking_terms_and_cancellation_policy.pdf, p. 4]",
+  "sources": [
+    {
+      "source": "aurorastay_refunds_and_additional_charges_guide.pdf",
+      "page": 4,
+      "score": 0.274
+    },
+    {
+      "source": "aurorastay_booking_terms_and_cancellation_policy.pdf",
+      "page": 4,
+      "score": 0.2484
+    },
+    {
+      "source": "aurorastay_guest_conduct_accessibility_and_resolution_guidelines.pdf",
+      "page": 5,
+      "score": 0.206
+    }
+  ]
+}

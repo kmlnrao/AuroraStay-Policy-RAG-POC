@@ -1,4 +1,4 @@
-"""Local, policy-grounded RAG core with optional Groq-hosted generation."""
+"""Local, policy-grounded RAG core with optional hosted generation."""
 
 from __future__ import annotations
 
@@ -160,16 +160,12 @@ def offline_answer(query, results):
     return f"{sentence} [{format_citation(item)}]"
 
 
-def answer_query(query, results, model=None, temperature=0.0, max_tokens=1024):
-    """Use Groq generation when configured; otherwise disclose local mode."""
-    api_key = os.getenv("GROQ_API_KEY")
-    model = model or os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+def answer_query(query, results, model=None, temperature=0.0, max_tokens=1024,
+                 provider=None):
+    """Use the selected hosted provider or disclose the local fallback mode."""
     if not results or results[0]["score"] <= 0:
         return ABSTENTION, "offline_extract"
-    if not api_key:
-        return offline_answer(query, results), "offline_extract"
 
-    base = os.getenv("GROQ_API_BASE", "https://api.groq.com/openai/v1").rstrip("/")
     evidence = "\n\n".join(
         f'[{format_citation(item)}]\n{item["text"]}' for item in results
     )
@@ -185,6 +181,53 @@ def answer_query(query, results, model=None, temperature=0.0, max_tokens=1024):
         "state only the clearly labeled facts and advise staff to verify.\n\n"
         f"Question: {query}\n\nEvidence:\n{evidence}"
     )
+    provider = (provider or os.getenv("LLM_PROVIDER", "groq")).strip().lower()
+
+    if provider == "openai":
+        api_key = os.getenv("OPENAI_API_KEY", "").strip()
+        if not api_key:
+            raise RuntimeError("OpenAI is selected but OPENAI_API_KEY is not configured.")
+        selected_model = model or os.getenv("OPENAI_MODEL", "gpt-5-mini")
+        try:
+            response = requests.post(
+                "https://api.openai.com/v1/responses",
+                headers={"Authorization": f"Bearer {api_key}"},
+                json={
+                    "model": selected_model,
+                    "reasoning": {"effort": "low"},
+                    "instructions": (
+                        "Answer only from the supplied policy evidence. Match the "
+                        "exact property and fee column. Keep the answer concise."
+                    ),
+                    "input": prompt,
+                    "max_output_tokens": max(400, min(int(max_tokens), 1600)),
+                },
+                timeout=60,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            text = "\n".join(
+                content["text"]
+                for item in payload.get("output", [])
+                for content in item.get("content", [])
+                if content.get("type") == "output_text" and content.get("text")
+            ).strip()
+            if not text:
+                raise RuntimeError("OpenAI returned an empty answer.")
+            return text, "openai"
+        except requests.RequestException as exc:
+            status = getattr(getattr(exc, "response", None), "status_code", None)
+            detail = f" (HTTP {status})" if status else ""
+            raise RuntimeError(f"OpenAI request failed{detail}.") from None
+
+    if provider != "groq":
+        raise ValueError("provider must be 'groq' or 'openai'")
+
+    api_key = os.getenv("GROQ_API_KEY", "").strip()
+    if not api_key:
+        return offline_answer(query, results), "offline_extract"
+    model = model or os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+    base = os.getenv("GROQ_API_BASE", "https://api.groq.com/openai/v1").rstrip("/")
     try:
         response = requests.post(
             f"{base}/chat/completions",
@@ -208,7 +251,7 @@ def answer_query(query, results, model=None, temperature=0.0, max_tokens=1024):
 
 
 def public_result(query, k=3, store=None, include_answer=True, model=None,
-                  temperature=0.0, max_tokens=1024):
+                  temperature=0.0, max_tokens=1024, provider=None):
     if not isinstance(query, str) or not query.strip():
         raise ValueError("query must be a non-empty string")
     results = store.search(query.strip(), k=k)
@@ -228,6 +271,6 @@ def public_result(query, k=3, store=None, include_answer=True, model=None,
     if include_answer:
         output["answer"], output["mode"] = answer_query(
             query.strip(), results, model=model, temperature=temperature,
-            max_tokens=max_tokens,
+            max_tokens=max_tokens, provider=provider,
         )
     return output
