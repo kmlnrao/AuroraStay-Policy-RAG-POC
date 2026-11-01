@@ -1,0 +1,1 @@
+- [Groq policy-answer reliability](groq-policy-answer-reliability.md) — preserve explicit table row/column handling; the larger Groq model was more accurate on property fee tables.
