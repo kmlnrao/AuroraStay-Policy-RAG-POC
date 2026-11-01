@@ -166,13 +166,13 @@ id = "Kho9OEFC8X-9VxgzwV6CR"
 uri = "file://generated-artifacts/AuroraStay_Project_Submission.zip"
 type = "unspecified"
 title = "AuroraStay Complete Submission Bundle (ZIP)"
-description = "Updated 32-slide PDF and editable deck source, completed notebook, Groq/DeepEval evaluation script and real 20-case scores, backend/frontend source, policy data, and API-key protection. Secret files and caches are excluded."
+description = "Updated 32-slide PDF and editable deck, OpenAI-enabled RAG backend and verified response, completed notebook, DeepEval script and results, policy data, and deployment files. Secrets and caches are excluded."
 logical_id = "851570c2-9628-4ce5-8dd3-873b2aa445a1"
-content_hash = "sha256:9b4d7a8eaa593e040c581180061b06224de07f25b7c4a54419a172a678ceea1a"
-size = 11129814
-mtime_ms = 1793502565530
-storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/851570c2-9628-4ce5-8dd3-873b2aa445a1/6f4bbddb-e770-4f26-a77a-263b450a7d0b"
-storage_version_token = "1793502577830428"
+content_hash = "sha256:51ced602a20b407f35b0c12e2a188fde46750561c7713edc9e9c739958117d59"
+size = 11119318
+mtime_ms = 1793561771753
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/851570c2-9628-4ce5-8dd3-873b2aa445a1/bfaccce1-37a4-4570-9206-2d38135c30aa"
+storage_version_token = "1793561787123593"
 content_type = "application/octet-stream"
 
 [[outputs]]
@@ -187,4 +187,18 @@ size = 268673
 mtime_ms = 1793502542174
 storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/b53e745d-d246-42a9-9d99-32cb9908610e/8189e525-1fb2-4a08-9952-c4fa434f5bbc"
 storage_version_token = "1793502548865154"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "s0PZLN5dVz03YazxiF4S4"
+uri = "file://.local/outputs/AuroraStay-Policy-Assistant-OpenAI-Updated.pdf"
+type = "pdf"
+title = "AuroraStay Policy Assistant — Updated PDF"
+description = "Updated 32-slide presentation with the verified OpenAI gpt-5-mini RAG answer, its citations, and existing DeepEval results."
+logical_id = "03dfe160-305e-4ca5-832f-3298f003c225"
+content_hash = "sha256:b216f9adf1b663fa31305be6ac4751cd6300820c46f9acc0f0a7b76ef153daa7"
+size = 267548
+mtime_ms = 1793561749517
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/03dfe160-305e-4ca5-832f-3298f003c225/efd79def-1357-44b4-bdf9-5365cb18bd72"
+storage_version_token = "1793561751124082"
 content_type = "application/pdf"
