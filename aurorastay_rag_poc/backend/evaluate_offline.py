@@ -1,9 +1,13 @@
 """Run all supplied cases and write explicitly-labelled offline proxy metrics."""
 from pathlib import Path
 import json
+import os
 import sys
 
 import pandas as pd
+
+# Keep these proxy measurements deterministic and free of hosted-model calls.
+os.environ.pop("GROQ_API_KEY", None)
 
 from rag_core import ABSTENTION, TfidfFaissStore, public_result, tokens
 

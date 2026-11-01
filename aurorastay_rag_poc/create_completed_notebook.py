@@ -10,10 +10,12 @@ cells = [
         "documents, show page-level sources, and measure all 20 supplied cases. "
         "The PDF presentation is the required submission; this notebook is a "
         "supporting, reproducible artifact.\n\n"
-        "**Execution note:** this notebook runs the local FAISS/TF-IDF baseline "
-        "without secrets. Its quality metrics are offline lexical proxies, not "
-        "DeepEval judge scores. Hosted LLM evaluation and Codespaces inference "
-        "remain separate deployment steps."
+        "**Execution note:** retrieval uses the local FAISS/TF-IDF baseline. "
+        "When `GROQ_API_KEY` is configured, the answer demonstration uses Groq "
+        "(`openai/gpt-oss-120b` by default); otherwise it reports "
+        "`offline_extract`. The pet-fee Groq answer was verified in Replit, not "
+        "through Codespaces. The quality metrics are offline lexical proxies, "
+        "not DeepEval judge scores."
     ),
     nbf.v4.new_code_cell(
         "from pathlib import Path\n"
@@ -90,9 +92,9 @@ cells = [
         "`frontend/Dockerfile`; `docker-compose.yml` wires them together.\n"
         "- Routes: `/health`, `/v1/relevant_chunks`, `/v1/answer`, "
         "`/v1/answer_with_relevant_chunks`.\n"
-        "- Local index/inference can be tested. GitHub push and public "
-        "Codespaces forwarded-URL inference have not been performed; no "
-        "deployment URL or screenshot is fabricated.\n"
+        "- Groq-hosted generation was verified in Replit. This does not verify "
+        "Codespaces inference; add the secret separately there and capture the "
+        "forwarded app/API evidence before claiming deployment.\n"
         "- Keep API credentials only in the hosting provider's secret manager."
     ),
 ]
