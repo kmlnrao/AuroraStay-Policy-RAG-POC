@@ -1,4 +1,4 @@
-"""Local, policy-grounded RAG core with optional OpenAI-compatible generation."""
+"""Local, policy-grounded RAG core with optional Groq-hosted generation."""
 
 from __future__ import annotations
 
@@ -160,15 +160,16 @@ def offline_answer(query, results):
     return f"{sentence} [{format_citation(item)}]"
 
 
-def answer_query(query, results, model="gpt-4o-mini", temperature=0.0, max_tokens=350):
-    """Use remote generation only when a key exists; otherwise disclose local mode."""
-    api_key = os.getenv("OPENAI_API_KEY")
+def answer_query(query, results, model=None, temperature=0.0, max_tokens=1024):
+    """Use Groq generation when configured; otherwise disclose local mode."""
+    api_key = os.getenv("GROQ_API_KEY")
+    model = model or os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
     if not results or results[0]["score"] <= 0:
         return ABSTENTION, "offline_extract"
     if not api_key:
         return offline_answer(query, results), "offline_extract"
 
-    base = os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1").rstrip("/")
+    base = os.getenv("GROQ_API_BASE", "https://api.groq.com/openai/v1").rstrip("/")
     evidence = "\n\n".join(
         f'[{format_citation(item)}]\n{item["text"]}' for item in results
     )
@@ -177,7 +178,11 @@ def answer_query(query, results, model="gpt-4o-mini", temperature=0.0, max_token
         "evidence. State property/rate-plan qualifications. If evidence is missing or "
         "conflicting, say so and direct staff to verify with the property. Never invent "
         "a fee, promise, or legal conclusion. Include short source citations as "
-        "[filename, p. N]. Do not expose sensitive guest or payment information.\n\n"
+        "[filename, p. N]. Do not expose sensitive guest or payment information. "
+        "When evidence is a table, match the exact property row and requested column "
+        "heading before using an amount. Do not assign an adjacent amount to the wrong "
+        "column or infer limits that are not explicitly stated. If a table is ambiguous, "
+        "state only the clearly labeled facts and advise staff to verify.\n\n"
         f"Question: {query}\n\nEvidence:\n{evidence}"
     )
     try:
@@ -194,14 +199,16 @@ def answer_query(query, results, model="gpt-4o-mini", temperature=0.0, max_token
         )
         response.raise_for_status()
         text = response.json()["choices"][0]["message"]["content"].strip()
-        return text, "openai"
+        if not text:
+            raise ValueError("Groq returned an empty answer.")
+        return text, "groq"
     except Exception:
         # Fail closed to a transparent extractive answer rather than lose service.
         return offline_answer(query, results), "offline_extract_fallback"
 
 
-def public_result(query, k=3, store=None, include_answer=True, model="gpt-4o-mini",
-                  temperature=0.0, max_tokens=350):
+def public_result(query, k=3, store=None, include_answer=True, model=None,
+                  temperature=0.0, max_tokens=1024):
     if not isinstance(query, str) or not query.strip():
         raise ValueError("query must be a non-empty string")
     results = store.search(query.strip(), k=k)

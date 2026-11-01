@@ -17,12 +17,15 @@ requests them.
 - The offline metrics are transparent lexical/support proxies. They are **not**
   DeepEval judge scores and must not be reported as such. The assignment's
   DeepEval GEval results require an approved evaluation API key.
-- If `OPENAI_API_KEY` is set in the runtime's secret manager, generation uses
-  the configured OpenAI-compatible chat endpoint. Otherwise it returns an
-  extractive, page-cited answer and labels the mode `offline_extract`.
-- GitHub push and Codespaces inference were not completed or claimed: the
-  GitHub connection was declined, and no hosted endpoint was supplied. Never
-  put an API key or token in this folder, notebook, or presentation.
+- If `GROQ_API_KEY` is set in the runtime's secret manager, generation uses
+  Groq's OpenAI-compatible chat-completions endpoint with
+  `openai/gpt-oss-120b` by default. Successful hosted responses are labeled
+  `groq`; without a key the API returns a cited extractive answer labeled
+  `offline_extract`. If a hosted request fails, the fallback is labeled
+  `offline_extract_fallback`.
+- Keep `GROQ_API_KEY` in Replit Secrets or Codespaces Secrets as appropriate;
+  the two environments do not share secrets. Never put an API key or token in
+  this folder, notebook, or presentation.
 
 ## Run locally
 
@@ -35,3 +38,8 @@ requests them.
 The API listens on port 7860; Streamlit listens on port 8501. The offline
 extractor is an engineering fallback, not a substitute for the hosted LLM and
 independent rubric evaluation.
+
+To use Groq with Docker Compose, make `GROQ_API_KEY` available to the shell
+running Compose. Optionally set `GROQ_MODEL` to another currently supported
+Groq chat model. The compose file passes the key only into the backend
+container; do not commit it or paste it into screenshots.

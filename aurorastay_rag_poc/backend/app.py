@@ -40,9 +40,11 @@ def answer():
             data.get("k", 3),
             store,
             include_answer=True,
-            model=data.get("model_name", "gpt-4o-mini"),
+            model=data.get("model_name") or os.getenv(
+                "GROQ_MODEL", "openai/gpt-oss-120b"
+            ),
             temperature=data.get("temperature", 0.0),
-            max_tokens=data.get("max_tokens", 350),
+            max_tokens=data.get("max_tokens", 1024),
         )
         if request.path.endswith("/answer"):
             result.pop("relevant_chunks", None)
