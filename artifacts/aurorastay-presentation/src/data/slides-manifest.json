@@ -116,7 +116,7 @@
     "position": 15,
     "filepath": "src/pages/slides/Slide15.tsx",
     "title": "Judge Model",
-    "description": "Rubric plan: DeepEval GEval with a separate gpt-4o judge. It was not run because an approved judge-model secret is not configured. No judge score is claimed.",
+    "description": "DeepEval GEval ran on 20 cases with Groq openai/gpt-oss-120b as judge. The same model generated and judged answers, so results are not an independent evaluation.",
     "speakerNotes": ""
   },
   {
@@ -124,7 +124,7 @@
     "position": 16,
     "filepath": "src/pages/slides/Slide16.tsx",
     "title": "Evaluation Measures",
-    "description": "Faithfulness: claims supported by retrieval. Contextual recall: evidence completeness. Contextual precision: evidence relevance. Answer relevancy: response addresses question. Current reported values are lexical proxies, not GEval.",
+    "description": "DeepEval GEval scored answer correctness and grounding against expected answers and retrieved policy passages. Across 20 cases the mean score was 0.745/1.00; this is not a course grade.",
     "speakerNotes": ""
   },
   {
@@ -132,7 +132,7 @@
     "position": 17,
     "filepath": "src/pages/slides/Slide17.tsx",
     "title": "Evaluation Results",
-    "description": "10/10 evaluation questions returned an answer. Offline proxies: support 1.000; context recall 0.574; context precision 0.164; answer overlap 0.449. Precision and overlap improved versus the prior chunk setting; recall fell. Not semantic judge scores.",
+    "description": "DeepEval GEval: 20 cases, mean 0.745/1.00; 6 cases scored below 0.50 as a descriptive cutoff, not a pass threshold. Low scores flag fee, breakfast, noise, and occupancy answers for review.",
     "speakerNotes": ""
   },
   {

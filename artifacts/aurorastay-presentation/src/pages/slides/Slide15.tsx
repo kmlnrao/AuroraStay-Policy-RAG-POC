@@ -139,7 +139,7 @@ const Slide15: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"Rubric plan: DeepEval GEval with a separate gpt-4o judge. It was not run because an approved judge-model secret is not configured. No judge score is claimed."}</span></p></div><div key={6} style={{
+          }}>{"DeepEval GEval ran on 20 cases with Groq openai/gpt-oss-120b as the judge."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",
@@ -160,15 +160,15 @@ const Slide15: React.FC = () => {
             fontFamily: "'Nunito', sans-serif",
             fontWeight: "700",
             color: "#000000"
-          }}>{""}</span><span style={{
+          }}>{"Caveat:"}</span><span style={{
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"
-          }}>{""}</span><span style={{
+          }}>{"the same model generated and judged answers."}</span><span style={{
             fontStyle: "italic",
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"
-          }}>{""}</span></p></div></div></div>;
+          }}>{"Not an independent judge."}</span></p></div></div></div>;
 };
 export default Slide15;

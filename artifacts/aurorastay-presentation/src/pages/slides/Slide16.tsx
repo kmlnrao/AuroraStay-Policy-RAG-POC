@@ -139,7 +139,7 @@ const Slide16: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"Faithfulness: claims supported by retrieval. Contextual recall: evidence completeness. Contextual precision: evidence relevance. Answer relevancy: response addresses question. Current reported values are lexical proxies, not GEval."}</span></p></div><div key={6} style={{
+          }}>{"DeepEval GEval scores answer correctness and grounding against expected answers and retrieved policy passages."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",
@@ -160,7 +160,7 @@ const Slide16: React.FC = () => {
             fontFamily: "'Nunito', sans-serif",
             fontWeight: "700",
             color: "#000000"
-          }}>{""}</span><span style={{
+          }}>{"20 cases · mean score 0.745/1.00 · scores are not a course grade."}</span><span style={{
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"

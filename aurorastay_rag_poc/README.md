@@ -15,8 +15,11 @@ requests them.
 - `Data/evaluation.csv` and `Data/test.csv` contain 10 cases each. Run
   `python backend/evaluate_offline.py` to regenerate the 20-case result CSV.
 - The offline metrics are transparent lexical/support proxies. They are **not**
-  DeepEval judge scores and must not be reported as such. The assignment's
-  DeepEval GEval results require an approved evaluation API key.
+  DeepEval judge scores. A separate DeepEval 4.3.2 GEval run covers all 20
+  supplied cases using Groq `openai/gpt-oss-120b` for both generation and
+  judging; its mean score is 0.745/1.00. Because the same model generated and
+  judged the answers, the result is not an independent evaluation or a course
+  grade. Per-case scores/reasons are in `evaluation_results_deepeval.csv`.
 - If `GROQ_API_KEY` is set in the runtime's secret manager, generation uses
   Groq's OpenAI-compatible chat-completions endpoint with
   `openai/gpt-oss-120b` by default. Successful hosted responses are labeled
@@ -40,6 +43,8 @@ requests them.
 4. Or use Docker Compose from this directory after setting `API_ACCESS_KEY`:
    `docker compose up --build`
 5. Run the supplied offline checks: `python backend/evaluate_offline.py`
+6. Run the DeepEval judge: install `requirements-evaluation.txt`, set
+   `GROQ_API_KEY`, then run `python evaluate_deepeval.py`
 
 The API listens on port 7860; Streamlit listens on port 8501. The offline
 extractor is an engineering fallback, not a substitute for the hosted LLM and
