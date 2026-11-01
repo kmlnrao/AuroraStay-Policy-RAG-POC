@@ -10,6 +10,7 @@ st.title("AuroraStay Policy Assistant")
 st.caption("Internal POC · grounded answers with page-level policy citations")
 
 backend = os.getenv("BACKEND_URL", "http://localhost:7860").rstrip("/")
+backend_api_key = os.getenv("BACKEND_API_KEY", "").strip()
 with st.sidebar:
     st.header("Response settings")
     k = st.slider("Policy passages", min_value=1, max_value=6, value=3)
@@ -36,6 +37,11 @@ if st.button("Get policy answer", type="primary"):
                 response = requests.post(
                     backend + endpoint,
                     json={"query": question, "k": k, "temperature": temperature},
+                    headers=(
+                        {"Authorization": f"Bearer {backend_api_key}"}
+                        if backend_api_key
+                        else {}
+                    ),
                     timeout=60,
                 )
             response.raise_for_status()

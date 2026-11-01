@@ -1,4 +1,5 @@
 import os
+import hmac
 from pathlib import Path
 
 from flask import Flask, jsonify, request
@@ -10,6 +11,26 @@ HERE = Path(__file__).resolve().parent
 store = TfidfFaissStore.load(os.getenv("INDEX_DIR", str(HERE / "index")))
 app = Flask("AuroraStay Policy Assistant")
 app.config["MAX_CONTENT_LENGTH"] = 32 * 1024
+
+
+@app.before_request
+def protect_inference_api():
+    if not request.path.startswith("/v1/"):
+        return None
+
+    expected_key = os.getenv("API_ACCESS_KEY", "").strip()
+    if not expected_key:
+        return jsonify({"error": "API access is not configured"}), 503
+
+    authorization = request.headers.get("Authorization", "")
+    scheme, separator, supplied_key = authorization.partition(" ")
+    if (
+        not separator
+        or scheme.lower() != "bearer"
+        or not hmac.compare_digest(supplied_key.strip(), expected_key)
+    ):
+        return jsonify({"error": "Unauthorized"}), 401
+    return None
 
 
 @app.get("/")

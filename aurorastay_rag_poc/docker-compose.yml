@@ -7,11 +7,13 @@ services:
       GROQ_API_KEY: ${GROQ_API_KEY:-}
       GROQ_API_BASE: ${GROQ_API_BASE:-https://api.groq.com/openai/v1}
       GROQ_MODEL: ${GROQ_MODEL:-openai/gpt-oss-120b}
+      API_ACCESS_KEY: ${API_ACCESS_KEY:?Add API_ACCESS_KEY to Codespaces or the local environment}
   frontend:
     build: ./frontend
     ports:
       - "8501:8501"
     environment:
       BACKEND_URL: http://backend:7860
+      BACKEND_API_KEY: ${API_ACCESS_KEY:?Add API_ACCESS_KEY to Codespaces or the local environment}
     depends_on:
       - backend

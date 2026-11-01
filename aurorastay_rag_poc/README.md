@@ -26,13 +26,19 @@ requests them.
 - Keep `GROQ_API_KEY` in Replit Secrets or Codespaces Secrets as appropriate;
   the two environments do not share secrets. Never put an API key or token in
   this folder, notebook, or presentation.
+- In Codespaces, also create a separate high-entropy `API_ACCESS_KEY` secret.
+  Docker Compose requires it, the Streamlit server sends it to the backend as a
+  Bearer token, and unauthenticated `/v1/*` requests are rejected. The `/health`
+  endpoint remains public for service checks. Do not reuse the Groq provider key
+  as the API access key.
 
 ## Run locally
 
 1. Build the vector index: `python backend/build_index.py`
 2. Start the API: `cd backend && python app.py`
 3. In another terminal start the UI: `cd frontend && streamlit run app.py`
-4. Or use Docker Compose from this directory: `docker compose up --build`
+4. Or use Docker Compose from this directory after setting `API_ACCESS_KEY`:
+   `docker compose up --build`
 5. Run the supplied offline checks: `python backend/evaluate_offline.py`
 
 The API listens on port 7860; Streamlit listens on port 8501. The offline
@@ -43,3 +49,8 @@ To use Groq with Docker Compose, make `GROQ_API_KEY` available to the shell
 running Compose. Optionally set `GROQ_MODEL` to another currently supported
 Groq chat model. The compose file passes the key only into the backend
 container; do not commit it or paste it into screenshots.
+
+For direct API calls, send `Authorization: Bearer <API_ACCESS_KEY>` to
+`/v1/relevant_chunks`, `/v1/answer`, and
+`/v1/answer_with_relevant_chunks`. Keep the access token in a secret manager,
+never in source control or screenshots.
