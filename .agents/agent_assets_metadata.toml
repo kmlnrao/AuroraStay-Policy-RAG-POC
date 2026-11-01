@@ -146,3 +146,31 @@ mtime_ms = 1793068012438
 storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/23d7c755-152e-41ec-b32c-687f234b39cd/4a1b3fa7-ac66-4e16-b906-b99b70643b93"
 storage_version_token = "1793068014041651"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "yEpuXB06I0Zv0zu5pHRne"
+uri = "file://.local/outputs/AuroraStay_Policy_Assistant_Updated.pdf"
+type = "pdf"
+title = "AuroraStay Policy Assistant (Updated PDF)"
+description = "Updated presentation including the verified Groq answer-generation evidence."
+logical_id = "0f5f826d-bb1d-4e3c-9968-8f9aa1bc7099"
+content_hash = "sha256:55ca4bd5101b54438125a02042584512e06e3cad09d3cecdaa03057f1530c5eb"
+size = 264165
+mtime_ms = 1793501054090
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/0f5f826d-bb1d-4e3c-9968-8f9aa1bc7099/65734517-379c-4a68-b04e-3f74c2909b8e"
+storage_version_token = "1793501055594205"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "Kho9OEFC8X-9VxgzwV6CR"
+uri = "file://generated-artifacts/AuroraStay_Project_Submission.zip"
+type = "unspecified"
+title = "AuroraStay Project Submission Bundle (ZIP)"
+description = "Updated project bundle with the Groq-enabled backend, completed notebook, policy/evaluation files, updated presentation PDF, and editable slide source. Secret files and caches are excluded."
+logical_id = "851570c2-9628-4ce5-8dd3-873b2aa445a1"
+content_hash = "sha256:4f81986067336d3458f6827f9ffdc21055b1bcd151e03e03ef0c577315837482"
+size = 11118271
+mtime_ms = 1793501102734
+storage_uri = "gcs://replit-rams-assets-pike/rams/assets/repl:31bf89a8-dfcd-4612-9069-087c04c26a0d/851570c2-9628-4ce5-8dd3-873b2aa445a1/5b267e4c-43fa-4b4a-be81-a0847e39abfa"
+storage_version_token = "1793501111368013"
+content_type = "application/octet-stream"
