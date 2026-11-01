@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import img_1 from "./assets/images/image_1.png";
+import liveAnswerScreenshot from "./assets/images/codespaces_openai_answer.png";
 const Slide27: React.FC = () => {
   const outerRef = useRef<HTMLDivElement>(null);
   const [layout, setLayout] = useState({
@@ -118,8 +119,8 @@ const Slide27: React.FC = () => {
         width: "20.28px",
         height: "20.28px",
         boxSizing: "border-box",
-        backgroundColor: "#0944A1",
-        border: "1px solid #FFFFFF"
+          backgroundColor: "transparent",
+          border: "none"
       }} /><div key={5} style={{
         position: "absolute",
         left: "72.63px",
@@ -139,7 +140,16 @@ const Slide27: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"No public Codespaces URL or live inference screenshot exists. Do not submit a fabricated endpoint. This 6-point deployment-inference criterion remains unverified."}</span></p></div><div key={6} style={{
+          }}>{""}</span></p></div><img key={6} src={liveAnswerScreenshot} alt="Live Codespaces AuroraStay app answering the pet-fee question with citations and OpenAI generation mode" style={{
+        position: "absolute",
+        left: "120px",
+        top: "96px",
+        width: "720px",
+        height: "415px",
+        boxSizing: "border-box",
+        objectFit: "contain",
+        border: "1px solid #d1d5db"
+      }} /><div key={7} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",

@@ -212,7 +212,7 @@
     "position": 27,
     "filepath": "src/pages/slides/Slide27.tsx",
     "title": "Hosted Inference",
-    "description": "No public Codespaces URL or live inference screenshot exists. Do not submit a fabricated endpoint. This 6-point deployment-inference criterion remains unverified.",
+    "description": "Live Codespaces Streamlit answer for the ASH-CHI Loop pet-fee query. The screenshot shows the $50 nightly fee, $150 stay cap, source citations, and OpenAI generation mode.",
     "speakerNotes": ""
   },
   {
@@ -244,7 +244,7 @@
     "position": 31,
     "filepath": "src/pages/slides/Slide31.tsx",
     "title": "Completion and Submission Checklist",
-    "description": "Submit the presentation PDF only for the low-code path. Keep the notebook as working evidence. Before claiming full rubric completion: run DeepEval, publish files to GitHub, deploy both containers in Codespaces, capture live inference, and replace proxy results with judge scores.",
+    "description": "GitHub push, public Codespaces UI, OpenAI-backed answer, and 20-case DeepEval are complete. Still capture authenticated responses from both API routes and review two low-scoring cases.",
     "speakerNotes": ""
   },
   {

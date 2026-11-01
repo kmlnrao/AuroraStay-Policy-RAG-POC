@@ -124,8 +124,8 @@ const Slide31: React.FC = () => {
         position: "absolute",
         left: "72.63px",
         top: "129.03px",
-        width: "633.39px",
-        height: "42.02px",
+        width: "850px",
+        height: "120px",
         boxSizing: "border-box",
         backgroundColor: "transparent",
         padding: "9.6px 9.6px 9.6px 9.6px",
@@ -140,6 +140,6 @@ const Slide31: React.FC = () => {
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif",
             color: "#000000"
-          }}>{"Submit the presentation PDF only for the low-code path. Keep the notebook as working evidence. Before claiming full rubric completion: run DeepEval, publish files to GitHub, deploy both containers in Codespaces, capture live inference, and replace proxy results with judge scores."}</span></p></div></div></div>;
+          }}>{"GitHub push, public Codespaces UI, OpenAI-backed answer, and 20-case DeepEval are complete. Still capture authenticated responses from both API routes and review the two low-scoring cases."}</span></p></div></div></div>;
 };
 export default Slide31;
