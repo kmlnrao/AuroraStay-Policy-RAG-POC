@@ -160,7 +160,7 @@ const Slide17: React.FC = () => {
             fontFamily: "'Nunito', sans-serif",
             fontWeight: "700",
             color: "#000000"
-          }}>{"Low scores flag fee, breakfast, noise, and occupancy answers for review."}</span><span style={{
+          }}>{"Review low cases; one judge score and rationale disagreed."}</span><span style={{
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"

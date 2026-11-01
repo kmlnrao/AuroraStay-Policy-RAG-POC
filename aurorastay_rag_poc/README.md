@@ -19,7 +19,9 @@ requests them.
   supplied cases using Groq `openai/gpt-oss-120b` for both generation and
   judging; its mean score is 0.745/1.00. Because the same model generated and
   judged the answers, the result is not an independent evaluation or a course
-  grade. Per-case scores/reasons are in `evaluation_results_deepeval.csv`.
+  grade. One case (`test.csv:3`) had a score and rationale that disagreed, so
+  review per-case results in `evaluation_results_deepeval.csv` before relying on
+  the aggregate.
 - If `GROQ_API_KEY` is set in the runtime's secret manager, generation uses
   Groq's OpenAI-compatible chat-completions endpoint with
   `openai/gpt-oss-120b` by default. Successful hosted responses are labeled

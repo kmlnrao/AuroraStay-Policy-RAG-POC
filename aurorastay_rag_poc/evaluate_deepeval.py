@@ -170,8 +170,17 @@ def main():
         "generator_model": MODEL,
         "cases": len(scores),
         "mean_score": sum(scores) / len(scores),
+        "scores_below_0_50_descriptive": sum(score < 0.5 for score in scores),
         "threshold": None,
         "evaluation_library": "DeepEval",
+        "independence_warning": (
+            "The same Groq model generated and judged answers; this is not an "
+            "independent evaluation."
+        ),
+        "review_note": (
+            "At least one score/reason pair may require manual review; inspect "
+            "per-case output before relying on the aggregate."
+        ),
         "score_interpretation": "GEval score from 0 to 1; not a guaranteed course grade.",
     }
     (ROOT / "evaluation_summary_deepeval.json").write_text(

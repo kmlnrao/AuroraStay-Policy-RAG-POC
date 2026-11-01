@@ -14,8 +14,8 @@ cells = [
         "When `GROQ_API_KEY` is configured, the answer demonstration uses Groq "
         "(`openai/gpt-oss-120b` by default); otherwise it reports "
         "`offline_extract`. The pet-fee Groq answer was verified in Replit, not "
-        "through Codespaces. The quality metrics are offline lexical proxies, "
-        "not DeepEval judge scores."
+        "through Codespaces. Official DeepEval GEval results are included for "
+        "20 cases; the offline lexical proxies remain separate diagnostics."
     ),
     nbf.v4.new_code_cell(
         "from pathlib import Path\n"
@@ -67,12 +67,15 @@ cells = [
     ),
     nbf.v4.new_markdown_cell(
         "## 4. Evaluation and held-out test set\n"
-        "Run all ten rows from each provided file. The four local checks below "
-        "are labelled proxies: retrieved-context term recall/precision, exact "
-        "extractive support, and query-term answer overlap. They are useful for "
-        "debugging but are not semantic judge metrics. For official GEval scores, "
-        "run DeepEval with an approved judge-model secret and report its actual "
-        "per-case results."
+        "The four local checks below are diagnostic proxies only. A separate "
+        "official DeepEval 4.3.2 GEval run evaluated all 20 cases using Groq "
+        "`openai/gpt-oss-120b` as judge and generator. Mean score: 0.745/1.00; "
+        "6/20 were below 0.50 as a descriptive cutoff (no pass threshold was "
+        "configured). Because the same model generated and judged the answers, "
+        "this is not an independent evaluation or a course grade. One case "
+        "(`test.csv:3`) had a score and rationale that disagreed; review it. Per-case scores "
+        "and judge reasoning are in `evaluation_results_deepeval.csv`; summary "
+        "metadata is in `evaluation_summary_deepeval.json`."
     ),
     nbf.v4.new_code_cell(
         "import subprocess\n"

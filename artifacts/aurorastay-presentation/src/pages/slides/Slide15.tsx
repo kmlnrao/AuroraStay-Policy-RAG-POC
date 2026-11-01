@@ -160,15 +160,15 @@ const Slide15: React.FC = () => {
             fontFamily: "'Nunito', sans-serif",
             fontWeight: "700",
             color: "#000000"
-          }}>{"Caveat:"}</span><span style={{
+          }}>{"Same-model caveat: generator = judge."}</span><span style={{
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"
-          }}>{"the same model generated and judged answers."}</span><span style={{
+          }}>{""}</span><span style={{
             fontStyle: "italic",
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"
-          }}>{"Not an independent judge."}</span></p></div></div></div>;
+          }}>{""}</span></p></div></div></div>;
 };
 export default Slide15;
