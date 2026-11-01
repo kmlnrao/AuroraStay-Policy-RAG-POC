@@ -138,6 +138,94 @@ class TfidfFaissStore:
         return cls(state["chunks"], state["vocabulary"], state["idf"], index)
 
 
+class OpenAIFaissStore:
+    """FAISS cosine index over OpenAI text-embedding-3-small vectors."""
+
+    DEFAULT_MODEL = "text-embedding-3-small"
+
+    def __init__(self, chunks, index, model=DEFAULT_MODEL):
+        self.chunks = chunks
+        self.index = index
+        self.model = model
+
+    @staticmethod
+    def _embed_texts(texts, model):
+        api_key = os.getenv("OPENAI_API_KEY", "").strip()
+        if not api_key:
+            raise RuntimeError(
+                "OpenAI embeddings are selected but OPENAI_API_KEY is not configured."
+            )
+        response = requests.post(
+            "https://api.openai.com/v1/embeddings",
+            headers={"Authorization": f"Bearer {api_key}"},
+            json={"model": model, "input": texts},
+            timeout=60,
+        )
+        if not response.ok:
+            raise RuntimeError(
+                f"OpenAI embedding request failed (HTTP {response.status_code})."
+            )
+        vectors = sorted(response.json()["data"], key=lambda item: item["index"])
+        matrix = np.asarray([item["embedding"] for item in vectors], dtype="float32")
+        if matrix.ndim != 2 or len(matrix) != len(texts):
+            raise RuntimeError("OpenAI returned an invalid embedding matrix.")
+        return matrix
+
+    @classmethod
+    def build(cls, chunks, model=None, batch_size=64):
+        selected_model = model or os.getenv("OPENAI_EMBEDDING_MODEL", cls.DEFAULT_MODEL)
+        matrices = []
+        for start in range(0, len(chunks), batch_size):
+            batch = chunks[start:start + batch_size]
+            matrices.append(cls._embed_texts([item["text"] for item in batch], selected_model))
+        if not matrices:
+            raise ValueError("No chunks are available to index.")
+        matrix = np.vstack(matrices)
+        faiss.normalize_L2(matrix)
+        index = faiss.IndexFlatIP(matrix.shape[1])
+        index.add(matrix)
+        return cls(chunks, index, selected_model)
+
+    @classmethod
+    def load(cls, path):
+        target = Path(path)
+        state = json.loads((target / "store.json").read_text(encoding="utf-8"))
+        index = faiss.read_index(str(target / "policy.faiss"))
+        model = state.get("embedding_model", cls.DEFAULT_MODEL)
+        if state.get("embedding") != "OpenAI embeddings":
+            raise ValueError(f"{target} does not contain an OpenAI embedding index.")
+        return cls(state["chunks"], index, model)
+
+    def save(self, path):
+        target = Path(path)
+        target.mkdir(parents=True, exist_ok=True)
+        faiss.write_index(self.index, str(target / "policy.faiss"))
+        (target / "store.json").write_text(
+            json.dumps({
+                "chunks": self.chunks,
+                "embedding": "OpenAI embeddings",
+                "embedding_model": self.model,
+                "vector_dimensions": self.index.d,
+                "similarity": "cosine (FAISS inner product on normalized vectors)",
+            }, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+    def search(self, query, k=3):
+        matrix = self._embed_texts([query], self.model)
+        faiss.normalize_L2(matrix)
+        scores, indices = self.index.search(
+            matrix, min(max(int(k), 1), len(self.chunks))
+        )
+        found = []
+        for score, idx in zip(scores[0], indices[0]):
+            if idx >= 0:
+                item = dict(self.chunks[int(idx)])
+                item["score"] = float(score)
+                found.append(item)
+        return found
+
+
 def format_citation(item):
     return f'{item["source"]}, p. {item["page"]}'
 
@@ -175,10 +263,16 @@ def answer_query(query, results, model=None, temperature=0.0, max_tokens=1024,
         "conflicting, say so and direct staff to verify with the property. Never invent "
         "a fee, promise, or legal conclusion. Include short source citations as "
         "[filename, p. N]. Do not expose sensitive guest or payment information. "
+        "For multi-part questions, answer each part separately. Before saying a fact "
+        "is missing, check every supplied passage for the relevant amount, date, time, "
+        "or staff action and use it when present. For noise or service issues, include "
+        "the exact policy time window and required response steps when retrieved. "
         "When evidence is a table, match the exact property row and requested column "
         "heading before using an amount. Do not assign an adjacent amount to the wrong "
-        "column or infer limits that are not explicitly stated. If a table is ambiguous, "
-        "state only the clearly labeled facts and advise staff to verify.\n\n"
+        "column or infer limits that are not explicitly stated. For pet-fee questions, "
+        "distinguish nightly versus per-stay amounts and answer cancellation terms from "
+        "the rate-plan evidence. If a table is ambiguous, state only the clearly labeled "
+        "facts and advise staff to verify.\n\n"
         f"Question: {query}\n\nEvidence:\n{evidence}"
     )
     provider = (provider or os.getenv("LLM_PROVIDER", "groq")).strip().lower()
@@ -250,7 +344,7 @@ def answer_query(query, results, model=None, temperature=0.0, max_tokens=1024,
         return offline_answer(query, results), "offline_extract_fallback"
 
 
-def public_result(query, k=3, store=None, include_answer=True, model=None,
+def public_result(query, k=5, store=None, include_answer=True, model=None,
                   temperature=0.0, max_tokens=1024, provider=None):
     if not isinstance(query, str) or not query.strip():
         raise ValueError("query must be a non-empty string")

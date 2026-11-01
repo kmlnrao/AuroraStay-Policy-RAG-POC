@@ -139,7 +139,7 @@ const Slide15: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"DeepEval GEval ran on 20 cases with Groq openai/gpt-oss-120b as the judge."}</span></p></div><div key={6} style={{
+          }}>{"OpenAI gpt-5-mini generated answers using text-embedding-3-small retrieval; Groq openai/gpt-oss-120b judged them."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",
@@ -160,7 +160,7 @@ const Slide15: React.FC = () => {
             fontFamily: "'Nunito', sans-serif",
             fontWeight: "700",
             color: "#000000"
-          }}>{"Same-model caveat: generator = judge."}</span><span style={{
+          }}>{"Separate generator and judge; scores still need human review."}</span><span style={{
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"

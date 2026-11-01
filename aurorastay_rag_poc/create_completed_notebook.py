@@ -10,7 +10,9 @@ cells = [
         "documents, show page-level sources, and measure all 20 supplied cases. "
         "The PDF presentation is the required submission; this notebook is a "
         "supporting, reproducible artifact.\n\n"
-        "**Execution note:** retrieval uses the local FAISS/TF-IDF baseline. "
+        "**Execution note:** production retrieval uses OpenAI "
+        "`text-embedding-3-small` vectors in a FAISS cosine index. The local "
+        "TF-IDF index remains an offline fallback. "
         "Choose Groq (`LLM_PROVIDER=groq`) or OpenAI "
         "(`LLM_PROVIDER=openai`, `OPENAI_API_KEY`, `gpt-5-mini` by default); "
         "without the selected provider's key, it reports "
@@ -28,7 +30,7 @@ cells = [
         "if not (ROOT / 'Data').exists():\n"
         "    ROOT = Path('aurorastay_rag_poc')\n"
         "sys.path.insert(0, str(ROOT / 'backend'))\n"
-        "from rag_core import TfidfFaissStore, read_policy_pages, chunk_pages, public_result\n"
+        "from rag_core import OpenAIFaissStore, TfidfFaissStore, read_policy_pages, chunk_pages, public_result\n"
         "print('Project:', ROOT.resolve())"
     ),
     nbf.v4.new_markdown_cell("## 1. Data understanding and document extraction"),
@@ -41,26 +43,30 @@ cells = [
         "print('Sample chunk:', chunks[0]['text'][:400])"
     ),
     nbf.v4.new_markdown_cell(
-        "## 2. Chunking, local embeddings, and vector database\n"
-        "Each page is split into 120-word chunks with 20-word overlap. The local "
-        "corpus-fitted TF-IDF embedder creates normalized vectors; FAISS "
-        "IndexFlatIP returns cosine-ranked passages. This avoids model downloads "
-        "and retains source filename/page metadata."
+        "## 2. Chunking, transformer embeddings, and vector database\n"
+        "Each page is split into 120-word chunks with 20-word overlap. OpenAI "
+        "`text-embedding-3-small` produces 1,536-dimensional vectors; FAISS "
+        "IndexFlatIP returns cosine-ranked passages. Source filename and page "
+        "metadata stay attached to every chunk. The TF-IDF index remains available "
+        "for offline demonstrations."
     ),
     nbf.v4.new_code_cell(
-        "index_dir = ROOT / 'backend' / 'index'\n"
+        "provider = __import__('os').getenv('EMBEDDING_PROVIDER', 'openai').lower()\n"
+        "index_dir = ROOT / 'backend' / ('index_openai' if provider == 'openai' else 'index')\n"
+        "store_class = OpenAIFaissStore if provider == 'openai' else TfidfFaissStore\n"
         "if (index_dir / 'store.json').exists():\n"
-        "    store = TfidfFaissStore.load(index_dir)\n"
+        "    store = store_class.load(index_dir)\n"
         "else:\n"
-        "    store = TfidfFaissStore.build(chunks)\n"
+        "    store = store_class.build(chunks)\n"
         "    store.save(index_dir)\n"
         "print('FAISS vectors:', store.index.ntotal)\n"
-        "print('Vector dimensions:', len(store.vocabulary))"
+        "print('Embedding provider:', provider)\n"
+        "print('Vector dimensions:', store.index.d)"
     ),
     nbf.v4.new_markdown_cell("## 3. Retrieval and grounded answer demonstration"),
     nbf.v4.new_code_cell(
         "sample_question = 'What is the pet fee at ASH-CHI Loop?'\n"
-        "sample = public_result(sample_question, k=3, store=store)\n"
+        "sample = public_result(sample_question, k=5, store=store)\n"
         "print('Question:', sample_question)\n"
         "print('Answer:', sample['answer'])\n"
         "print('Mode:', sample['mode'])\n"
@@ -80,14 +86,18 @@ cells = [
     nbf.v4.new_markdown_cell(
         "## 4. Evaluation and held-out test set\n"
         "The four local checks below are diagnostic proxies only. A separate "
-        "official DeepEval 4.3.2 GEval run evaluated all 20 cases using Groq "
-        "`openai/gpt-oss-120b` as judge and generator. Mean score: 0.745/1.00; "
-        "6/20 were below 0.50 as a descriptive cutoff (no pass threshold was "
-        "configured). Because the same model generated and judged the answers, "
-        "this is not an independent evaluation or a course grade. One case "
-        "(`test.csv:3`) had a score and rationale that disagreed; review it. Per-case scores "
-        "and judge reasoning are in `evaluation_results_deepeval.csv`; summary "
-        "metadata is in `evaluation_summary_deepeval.json`."
+        "official DeepEval 4.3.2 GEval run evaluates the OpenAI embedding + "
+        "generation pipeline with Groq `openai/gpt-oss-120b` as a separate judge. "
+        "The judge is independent of the generator, but the metric is still an "
+        "LLM score, not a course grade or pass threshold. Review each score and "
+        "rationale in the per-case CSV; summary metadata is in "
+        "`evaluation_summary_deepeval.json`."
+    ),
+    nbf.v4.new_code_cell(
+        "deepeval_results = pd.read_csv(ROOT / 'evaluation_results_deepeval.csv')\n"
+        "deepeval_summary = json.loads((ROOT / 'evaluation_summary_deepeval.json').read_text())\n"
+        "display(pd.DataFrame(deepeval_summary, index=[0]))\n"
+        "display(deepeval_results[['case_id','score','reason']])"
     ),
     nbf.v4.new_code_cell(
         "import subprocess\n"

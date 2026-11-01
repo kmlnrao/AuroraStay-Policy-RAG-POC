@@ -44,7 +44,7 @@
     "position": 6,
     "filepath": "src/pages/slides/Slide6.tsx",
     "title": "Text Representation",
-    "description": "Embedding: corpus-fitted normalized TF-IDF vectors (local, deterministic; no pretrained max length). Similarity: cosine via normalized vectors. This is a lightweight POC baseline, not the domain-specific embedding model contemplated in the starter.",
+    "description": "OpenAI text-embedding-3-small creates 1,536-dimensional semantic vectors. FAISS cosine search retrieves by meaning. Local TF-IDF remains an offline fallback.",
     "speakerNotes": ""
   },
   {
@@ -68,7 +68,7 @@
     "position": 9,
     "filepath": "src/pages/slides/Slide9.tsx",
     "title": "FAISS Vector Index",
-    "description": "FAISS IndexFlatIP stores 61 normalized vectors. The persisted index and JSON metadata allow restart without re-reading PDFs. Vector dimension: 1,008 corpus terms.",
+    "description": "FAISS IndexFlatIP stores 61 normalized OpenAI vectors (1,536 dimensions). The persisted index and source/page metadata allow restart without re-embedding policy documents.",
     "speakerNotes": ""
   },
   {
@@ -116,7 +116,7 @@
     "position": 15,
     "filepath": "src/pages/slides/Slide15.tsx",
     "title": "Judge Model",
-    "description": "DeepEval GEval ran on 20 cases with Groq openai/gpt-oss-120b as judge. The same model generated and judged answers, so results are not an independent evaluation.",
+    "description": "OpenAI gpt-5-mini generated answers using text-embedding-3-small retrieval; Groq openai/gpt-oss-120b judged them. Different models provide generator and judge.",
     "speakerNotes": ""
   },
   {
@@ -124,7 +124,7 @@
     "position": 16,
     "filepath": "src/pages/slides/Slide16.tsx",
     "title": "Evaluation Measures",
-    "description": "DeepEval GEval scored answer correctness and grounding against expected answers and retrieved policy passages. Across 20 cases the mean score was 0.745/1.00; this is not a course grade.",
+    "description": "DeepEval GEval scored answer correctness and grounding against expected answers and retrieved policy passages. Across 20 cases the mean score was 0.885/1.00; this is not a course grade.",
     "speakerNotes": ""
   },
   {
@@ -132,7 +132,7 @@
     "position": 17,
     "filepath": "src/pages/slides/Slide17.tsx",
     "title": "Evaluation Results",
-    "description": "DeepEval GEval: 20 cases, mean 0.745/1.00; 6 cases scored below 0.50 as a descriptive cutoff, not a pass threshold. Low scores flag fee, breakfast, noise, and occupancy answers for review.",
+    "description": "DeepEval GEval: 20 cases, mean 0.885/1.00; 2 cases scored below 0.50 as a descriptive cutoff, not a pass threshold. Review the quiet-hours response and pet-fee/rate-plan answer.",
     "speakerNotes": ""
   },
   {

@@ -13,7 +13,7 @@ backend = os.getenv("BACKEND_URL", "http://localhost:7860").rstrip("/")
 backend_api_key = os.getenv("BACKEND_API_KEY", "").strip()
 with st.sidebar:
     st.header("Response settings")
-    k = st.slider("Policy passages", min_value=1, max_value=6, value=3)
+    k = st.slider("Policy passages", min_value=1, max_value=6, value=5)
     mode = st.radio("Response mode", ["Answer only", "Answer + sources"])
     temperature = st.slider("Temperature (remote mode)", 0.0, 0.7, 0.0, 0.1)
 

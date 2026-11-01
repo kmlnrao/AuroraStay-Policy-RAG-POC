@@ -139,7 +139,7 @@ const Slide17: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"20 cases · mean 0.745/1.00 · 6/20 scored below 0.50 (descriptive cutoff only)."}</span></p></div><div key={6} style={{
+          }}>{"20 cases · mean 0.885/1.00 · 2/20 scored below 0.50 (descriptive cutoff only)."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",
@@ -160,7 +160,7 @@ const Slide17: React.FC = () => {
             fontFamily: "'Nunito', sans-serif",
             fontWeight: "700",
             color: "#000000"
-          }}>{"Review low cases; one judge score and rationale disagreed."}</span><span style={{
+          }}>{"Two low cases: quiet-hours response and pet-fee/rate-plan details."}</span><span style={{
             fontSize: "calc(16pt * var(--pptx-font-scale, 1))",
             fontFamily: "'Nunito', sans-serif",
             color: "#000000"

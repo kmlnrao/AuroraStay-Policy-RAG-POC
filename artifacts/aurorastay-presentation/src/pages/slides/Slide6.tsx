@@ -139,7 +139,7 @@ const Slide6: React.FC = () => {
         }}><span style={{
             fontSize: "calc(14pt * var(--pptx-font-scale, 1))",
             fontFamily: "Montserrat, 'Helvetica Neue', Arial, sans-serif"
-          }}>{"Embedding: corpus-fitted normalized TF-IDF vectors (local, deterministic; no pretrained max length). Similarity: cosine via normalized vectors. This is a lightweight POC baseline, not the domain-specific embedding model contemplated in the starter."}</span></p></div><div key={6} style={{
+          }}>{"OpenAI text-embedding-3-small creates 1,536-dimensional semantic vectors. FAISS cosine search retrieves by meaning. Local TF-IDF remains an offline fallback."}</span></p></div><div key={6} style={{
         position: "absolute",
         left: "34.15px",
         top: "460.88px",

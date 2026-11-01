@@ -1,4 +1,4 @@
-"""Run official DeepEval GEval scores using Groq as the judge and generator."""
+"""Run DeepEval GEval with OpenAI RAG generation and a separate Groq judge."""
 
 from __future__ import annotations
 
@@ -20,14 +20,15 @@ from deepeval.test_case import LLMTestCase, SingleTurnParams
 ROOT = Path(__file__).resolve().parent
 BACKEND = ROOT / "backend"
 sys.path.insert(0, str(BACKEND))
-from rag_core import TfidfFaissStore, public_result  # noqa: E402
+from rag_core import OpenAIFaissStore, public_result  # noqa: E402
 
-MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+GENERATOR_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
+JUDGE_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 API_BASE = os.getenv("GROQ_API_BASE", "https://api.groq.com/openai/v1").rstrip("/")
 
 
 class GroqJudge(DeepEvalBaseLLM):
-    def __init__(self, api_key: str, model: str = MODEL):
+    def __init__(self, api_key: str, model: str = JUDGE_MODEL):
         self.api_key = api_key
         self.model = model
 
@@ -89,15 +90,17 @@ def main():
     parser.add_argument("--limit", type=int, help="Evaluate only the first N cases.")
     args = parser.parse_args()
 
-    api_key = os.getenv("GROQ_API_KEY", "").strip()
-    if not api_key:
-        raise SystemExit("GROQ_API_KEY is required; add it to the environment secrets.")
+    judge_key = os.getenv("GROQ_API_KEY", "").strip()
+    if not judge_key:
+        raise SystemExit("GROQ_API_KEY is required for the independent DeepEval judge.")
+    if not os.getenv("OPENAI_API_KEY", "").strip():
+        raise SystemExit("OPENAI_API_KEY is required for the OpenAI RAG generator.")
 
     rows = load_rows()
     if args.limit:
         rows = rows[:args.limit]
-    store = TfidfFaissStore.load(BACKEND / "index")
-    judge = GroqJudge(api_key)
+    store = OpenAIFaissStore.load(BACKEND / "index_openai")
+    judge = GroqJudge(judge_key)
     metric = GEval(
         name="Policy Answer Correctness and Grounding",
         criteria=(
@@ -128,8 +131,11 @@ def main():
     results = []
     total = len(rows)
     for index, row in enumerate(rows, start=1):
-        result = public_result(row["question"], k=3, store=store)
-        if result["mode"] != "groq":
+        result = public_result(
+            row["question"], k=5, store=store, model=GENERATOR_MODEL,
+            provider="openai",
+        )
+        if result["mode"] != "openai":
             raise RuntimeError(
                 f"{row['case_id']} used {result['mode']}; refusing to call this a hosted run."
             )
@@ -146,7 +152,7 @@ def main():
         record = {
             **row,
             "generator_mode": result["mode"],
-            "generator_model": MODEL,
+            "generator_model": f"OpenAI {GENERATOR_MODEL}",
             "judge_model": judge.get_model_name(),
             "deepeval_metric": metric.name,
             "score": metric.score,
@@ -167,15 +173,15 @@ def main():
     summary = {
         "metric": metric.name,
         "judge_model": judge.get_model_name(),
-        "generator_model": MODEL,
+        "generator_model": f"OpenAI {GENERATOR_MODEL}",
         "cases": len(scores),
         "mean_score": sum(scores) / len(scores),
         "scores_below_0_50_descriptive": sum(score < 0.5 for score in scores),
         "threshold": None,
         "evaluation_library": "DeepEval",
         "independence_warning": (
-            "The same Groq model generated and judged answers; this is not an "
-            "independent evaluation."
+            "OpenAI generated answers and a separate Groq model judged them. "
+            "The judge is still an LLM and scores require human review."
         ),
         "review_note": (
             "At least one score/reason pair may require manual review; inspect "

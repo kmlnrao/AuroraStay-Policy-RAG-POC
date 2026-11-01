@@ -1,13 +1,13 @@
 {
   "metric": "Policy Answer Correctness and Grounding",
   "judge_model": "Groq openai/gpt-oss-120b",
-  "generator_model": "openai/gpt-oss-120b",
+  "generator_model": "OpenAI gpt-5-mini",
   "cases": 20,
-  "mean_score": 0.745,
-  "scores_below_0_50_descriptive": 6,
+  "mean_score": 0.885,
+  "scores_below_0_50_descriptive": 2,
   "threshold": null,
   "evaluation_library": "DeepEval",
-  "independence_warning": "The same Groq model generated and judged answers; this is not an independent evaluation.",
+  "independence_warning": "OpenAI generated answers and a separate Groq model judged them. The judge is still an LLM and scores require human review.",
   "review_note": "At least one score/reason pair may require manual review; inspect per-case output before relying on the aggregate.",
   "score_interpretation": "GEval score from 0 to 1; not a guaranteed course grade."
 }
